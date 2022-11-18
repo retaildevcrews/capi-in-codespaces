@@ -8,6 +8,7 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')    on-create start" >> "$HOME/status"
 export REPO_BASE=$PWD
 
 mkdir -p "$HOME/.ssh"
+mkdir -p "$HOME/.oh-my-zsh/completions"
 
 {
     echo "export REPO_BASE=$REPO_BASE"
@@ -17,6 +18,12 @@ mkdir -p "$HOME/.ssh"
 # can remove once incorporated in base image
 echo "Updating k3d to 5.4.6"
 wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.4.6 bash
+
+echo "generating completions"
+gh completion -s zsh > ~/.oh-my-zsh/completions/_gh
+kubectl completion zsh > "$HOME/.oh-my-zsh/completions/_kubectl"
+k3d completion zsh > "$HOME/.oh-my-zsh/completions/_k3d"
+clusterctl completion zsh > "$HOME/.oh-my-zsh/completions/_clusterctl"
 
 # create local registry
 docker network create k3d
