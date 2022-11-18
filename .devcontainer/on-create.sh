@@ -19,12 +19,6 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
 echo "Updating k3d to 5.4.6"
 wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.4.6 bash
 
-echo "generating completions"
-gh completion -s zsh > ~/.oh-my-zsh/completions/_gh
-kubectl completion zsh > "$HOME/.oh-my-zsh/completions/_kubectl"
-k3d completion zsh > "$HOME/.oh-my-zsh/completions/_k3d"
-clusterctl completion zsh > "$HOME/.oh-my-zsh/completions/_clusterctl"
-
 # create local registry
 docker network create k3d
 k3d registry create registry.localhost --port 5500
@@ -59,6 +53,12 @@ echo "install clusterctl"
 curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.5/clusterctl-linux-amd64 -o clusterctl
 chmod +x ./clusterctl
 sudo mv ./clusterctl /usr/local/bin/clusterctl
+
+echo "generating completions"
+gh completion -s zsh > ~/.oh-my-zsh/completions/_gh
+kubectl completion zsh > "$HOME/.oh-my-zsh/completions/_kubectl"
+k3d completion zsh > "$HOME/.oh-my-zsh/completions/_k3d"
+clusterctl completion zsh > "$HOME/.oh-my-zsh/completions/_clusterctl"
 
 # enable the experimental Cluster topology feature.
 export CLUSTER_TOPOLOGY=true
