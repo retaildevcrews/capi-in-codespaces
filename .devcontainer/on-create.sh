@@ -74,12 +74,12 @@ export ENABLE_POD_SECURITY_STANDARD="false"
 # echo "generating cluster configuration"
 # clusterctl generate cluster capi-quickstart --flavor development \
 #   --kubernetes-version v1.25.0 \
-#   --control-plane-machine-count=3 \
-#   --worker-machine-count=3 \
+#   --control-plane-machine-count=1 \
+#   --worker-machine-count=1 \
 #   > capi-quickstart.yaml
 
-echo "applying cluster manifest"
-kubectl apply -f capi-quickstart.yaml
+# echo "applying cluster manifest"
+# kubectl apply -f "$REPO_BASE"/capi-quickstart.yaml
 
 # only run apt upgrade on pre-build
 if [ "$CODESPACE_NAME" = "null" ]
