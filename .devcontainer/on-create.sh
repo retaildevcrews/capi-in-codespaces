@@ -70,7 +70,7 @@ export SERVICE_DOMAIN="k8s.test"
 
 export ENABLE_POD_SECURITY_STANDARD="false"
 
-echo "igenerating cluster configuration"
+echo "generating cluster configuration"
 clusterctl generate cluster capi-quickstart --flavor development \
   --kubernetes-version v1.25.0 \
   --control-plane-machine-count=3 \
