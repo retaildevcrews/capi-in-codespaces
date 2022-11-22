@@ -3,13 +3,13 @@ CAPI/CAPZ in GitHub Codespaces
 
 ## Overview
 
-This is a template that will setup Cluster API using kind/k3d to provision other kubernetes clusters in a GitHub Codespaces using docker provider.
+This is a template that will setup Cluster API using kind/k3d to provision other kubernetes clusters in a GitHub Codespaces using `Docker` infrastructure provider.
 
 ## kind
 
 Cluster API requires an existing Kubernetes cluster accessible via kubectl. During the installation process the Kubernetes cluster will be transformed into a management cluster by installing the Cluster API provider components, so it is recommended to keep it separated from any application workload.
 
-- A management cluster is created and initialized with CAPI/CAPD components as part of the Codespaces setup
+- A management cluster is created and initialized with CAPI/CAPD components as part of the Codespaces setup:
 
   ```bash
 
@@ -17,7 +17,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
   ```
 
-- The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure the latest version of the CLI installed to your GH Codespaces
+- The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure an up-to-date version of the CLI installed to your GH Codespaces:
 
   ```bash
 
@@ -33,8 +33,8 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   >
   > clusterctl generate cluster capi-quickstart --flavor development \
   > --kubernetes-version v1.25.0 \
-  > --control-plane-machine-count=3 \
-  > --worker-machine-count=3 \
+  > --control-plane-machine-count=1 \
+  > --worker-machine-count=1 \
   > capi-quickstart.yaml
   >
   > ```
@@ -57,7 +57,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   # validate cluster and its resources
   clusterctl describe cluster capi-quickstart
 
-  # verify the control plane is up:
+  # verify the control plane is up
   kubectl get kubeadmcontrolplane
 
   ```
