@@ -70,7 +70,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
   ```
 
-- The control plane won’t be `Ready` until we install a CNI, deploy a CNI solition by running:
+- The control plane won’t be `Ready` until we install a CNI, deploy a CNI solution by running:
 
    ```bash
 
