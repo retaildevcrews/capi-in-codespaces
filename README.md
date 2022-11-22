@@ -25,7 +25,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
   ```
 
-- A workload cluster configuraton with 1 control plane and 1 worker machine is generated as part of Codespaces setup. It creates a YAML file named `capi-quickstart.yaml` with a predefined list of Cluster API objects; Cluster, Machines, Machine Deployments, etc.
+- A workload cluster configuraton with 1 control plane and 1 worker machine is generated as part of the Codespaces setup. It creates a YAML file named `capi-quickstart.yaml` with a predefined list of Cluster API objects; Cluster, Machines, Machine Deployments, etc.
 
   > If needed, regenerate the cluster configuration by running:
   >
