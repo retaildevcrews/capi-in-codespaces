@@ -27,6 +27,15 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
 - A workload cluster configuraton with 1 control plane and 1 worker machine is generated as part of the Codespaces setup. It creates a YAML file named `capi-quickstart.yaml` with a predefined list of Cluster API objects; Cluster, Machines, Machine Deployments, etc.
 
+  > When kind management cluster is reset to initial state, transform the kubernetes cluster in to management cluster by running:
+  >
+  > ```bash
+  >
+  > export CLUSTER_TOPOLOGY=true
+  > clusterctl init --infrastructure docker
+  >
+  > ```
+  >
   > If needed, regenerate the cluster configuration by running:
   >
   > ```bash
@@ -89,7 +98,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
 ## Clean up
 
-- Delete the workload cluster and it's kubeconfig:
+- Once done experimenting, delete the workload cluster and it's kubeconfig:
 
   ```bash
 
@@ -97,3 +106,5 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   rm capi-quickstart.kubeconfig
 
   ```
+
+> NOTE: For experimental and educational purpose, follow [this quickstart](https://cluster-api.sigs.k8s.io/user/quick-start.html) for the manual setup of CAPI and workload clusters
