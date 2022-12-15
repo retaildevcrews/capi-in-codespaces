@@ -20,7 +20,7 @@ A diagram showing the different components can be found here. <https://cluster-a
 
 > Cluster API has a number of controllers, both in the core Cluster API and the reference providers, which move the state of the cluster toward some defined desired state through the process of controller reconciliation.
 
-Each controller has a set of responsibilities when managing a cluster. For example, the [Cluster controller](https://cluster-api.sigs.k8s.io/developer/architecture/controllers/cluster.html) is responsible to populating common fields on the cluster CRD like the cluster status and API server endpoint. Cluster API is able to retrieve information about clusters through references to provider specific CRDs. These providers and their CRDs also have similar controllers that are responsible for managing the actual cluster infrastructure.
+Each controller has a set of responsibilities when managing a cluster. For example, the [Cluster controller](https://cluster-api.sigs.k8s.io/developer/architecture/controllers/cluster.html) is responsible to populating common fields on the cluster CRD like the cluster status and API server endpoint. Cluster API is able to retrieve information about clusters through references to provider specific CRDs. These providers and their CRDs also have similar controllers that are responsible for managing the actual state of the cluster infrastructure.
 
 A list of the controllers can be found here with details on the control loop of each controller. <https://cluster-api.sigs.k8s.io/developer/architecture/controllers.html>.
 
@@ -28,11 +28,11 @@ A list of the controllers can be found here with details on the control loop of 
 
 <https://cluster-api.sigs.k8s.io/reference/glossary.html#provider>
 
-TODO: what do providers do? how do they do it? example of infra and bootstrap provider. Infra can create VMs and bootstrap turns those VMs into k8s nodes.
-
-TODO: provider contracts enable consistensy across different providers: <https://cluster-api.sigs.k8s.io/developer/providers/contracts.html>
+Providers are responsible for the different aspects of cluster provisioning, each with specific technology or cloud implementations. For example, the Azure infrastructure provider can create virtual machines, Kubeadm control plane provider can initialize the Kubernetes control plane on the VMs, and the Kubeadm bootstrap provider can transform remaining VMs into Kubernetes nodes and join them to the cluster.
 
 A list of Cluster API providers can be found here. <https://cluster-api.sigs.k8s.io/reference/providers.html>.
+
+Details on the Cluster API contract that providers need to follow can be found here. <https://cluster-api.sigs.k8s.io/developer/providers/contracts.html>.
 
 ## kind
 
