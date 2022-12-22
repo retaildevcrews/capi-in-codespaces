@@ -32,6 +32,20 @@ A list of Cluster API providers can be found [here](https://cluster-api.sigs.k8s
 
 Details on the Cluster API contract that providers need to follow can be found [here](https://cluster-api.sigs.k8s.io/developer/providers/contracts.html).
 
+### Cluster API CRDs and visualizer
+
+TODO:
+
+- high level description of capi CRDs, provider CRDs, and their relationship
+- add context to links
+  - <https://cluster-api.sigs.k8s.io/developer/crd-relationships.html>
+  - <https://capz.sigs.k8s.io/topics/managedcluster.html#specification>
+  - <https://capz.sigs.k8s.io/topics/machinepools.html>
+- mention capi-visualizer can be used to view clusters and the crd relationships
+  - `make capi-visualizer`
+  - go to ports tab and open port named "CAPI Visualizer (30081)" in the browser
+  - <https://github.com/Jont828/cluster-api-visualizer>
+
 ## kind
 
 Cluster API requires an existing Kubernetes cluster accessible via kubectl. During the installation process the Kubernetes cluster will be transformed into a management cluster by installing the Cluster API provider components, so it is recommended to keep it separated from any application workload.
@@ -71,7 +85,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   > --kubernetes-version v1.25.0 \
   > --control-plane-machine-count=1 \
   > --worker-machine-count=1 \
-  > capi-quickstart.yaml
+  > > capi-quickstart.yaml
   >
   > ```
 
@@ -82,6 +96,8 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   kubectl apply -f capi-quickstart.yaml
 
   ```
+
+  Refresh the browser tab for the Visualizer app to view the latest changes.
 
 - Access the workload cluster:
 

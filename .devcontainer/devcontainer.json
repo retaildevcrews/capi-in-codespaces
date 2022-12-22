@@ -24,10 +24,12 @@
 
 	// forward ports for the app
 	"forwardPorts": [
+		30081
 	],
 
 	// add labels
 	"portsAttributes": {
+		"30081": { "label": "CAPI Visualizer" }
 	},
 
 	// Install extensions
