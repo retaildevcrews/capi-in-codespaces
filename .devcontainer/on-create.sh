@@ -12,6 +12,32 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
 
 {
     echo "export REPO_BASE=$REPO_BASE"
+
+    # set az env variables
+    if [ "$AZURE_SUBSCRIPTION_ID" != "" ]
+    then
+      AZURE_SUBSCRIPTION_ID_B64="$(echo -n "$AZURE_SUBSCRIPTION_ID" | base64 | tr -d '\n')"
+      export AZURE_SUBSCRIPTION_ID_B64
+    fi
+
+    if [ "$AZURE_TENANT_ID" != "" ]
+    then
+      AZURE_TENANT_ID_B64="$(echo -n "$AZURE_TENANT_ID" | base64 | tr -d '\n')"
+      export AZURE_TENANT_ID_B64
+    fi
+
+    if [ "$AZURE_CLIENT_ID" != "" ]
+    then
+      AZURE_CLIENT_ID_B64="$(echo -n "$AZURE_CLIENT_ID" | base64 | tr -d '\n')"
+      export AZURE_CLIENT_ID_B64
+    fi
+
+    if [ "$AZURE_CLIENT_SECRET" != "" ]
+    then
+      AZURE_CLIENT_SECRET_B64="$(echo -n "$AZURE_CLIENT_SECRET" | base64 | tr -d '\n')"
+      export AZURE_CLIENT_SECRET_B64
+    fi
+
     echo "compinit"
 } >> "$HOME/.zshrc"
 
