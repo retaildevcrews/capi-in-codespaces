@@ -32,19 +32,28 @@ A list of Cluster API providers can be found [here](https://cluster-api.sigs.k8s
 
 Details on the Cluster API contract that providers need to follow can be found [here](https://cluster-api.sigs.k8s.io/developer/providers/contracts.html).
 
-### Cluster API CRDs and visualizer
+### Cluster API CRDs
 
-TODO:
+Kubernetes clusters are described in cluster API as a combination of general Cluster API CRDs and provider specific CRDs. These CRDs represent the different parts of a Kubernetes cluster. For example, the cluster at a high level, the control plane, nodes, node pools, bootstrap configuration, etc.
 
-- high level description of capi CRDs, provider CRDs, and their relationship
-- add context to links
-  - <https://cluster-api.sigs.k8s.io/developer/crd-relationships.html>
-  - <https://capz.sigs.k8s.io/topics/managedcluster.html#specification>
-  - <https://capz.sigs.k8s.io/topics/machinepools.html>
-- mention capi-visualizer can be used to view clusters and the crd relationships
-  - `make capi-visualizer`
-  - go to ports tab and open port named "CAPI Visualizer (30081)" in the browser
-  - <https://github.com/Jont828/cluster-api-visualizer>
+A diagram of the CRDs and their relationships can be found [here](https://cluster-api.sigs.k8s.io/developer/crd-relationships.html).
+
+For AKS, details of the Azure provider CRDs can be found [here](https://capz.sigs.k8s.io/topics/managedcluster.html#specification).
+
+### Cluster API Visualizer
+
+[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer) provides a UI for visualizing the state of Cluster API in the management cluster.
+
+```bash
+
+# Add visualizer app to management cluster
+make capi-visualizer
+
+```
+
+In the "PORTS" tab, click the "Open in Browser" button for the visualizer app.
+
+![Open Cluster API Visualizer](images/open-capi-visualizer.png)
 
 ## kind
 
