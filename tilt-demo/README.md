@@ -2,16 +2,18 @@
 
 TODO:
 
+- [ ] Clone repo into a different workspace instead of commiting it?
+  - ideal option if no code changes are required to get all desired scenarios working
 - [x] run vote app and redis in docker
   - <https://docs.tilt.dev/api.html#api.docker_compose>
 - [ ] run result app and db in k8s
 - [ ] run worker app on host
-- [ ] run only mode vs edit mode
+- run-only mode vs edit mode
   - <https://docs.tilt.dev/tiltfile_config.html>
   - [ ] vote and redis
   - [ ] result and db
   - [ ] worker
-- [ ] multiple tiltfiles
+- multiple tiltfiles
   - <https://docs.tilt.dev/api.html#api.load>
   - <https://docs.tilt.dev/api.html#api.load_dynamic>
   - [x] vote and redis
@@ -19,14 +21,14 @@ TODO:
   - [ ] worker
 - [ ] auto reload vs manual reload
   - TODO: maybe use redis and db for manual reload?
-- [ ] links and port forward
+- links and port forward
   - <https://docs.tilt.dev/accessing_resource_endpoints.html#arbitrary-links>
   - [x] vote and redis
   - [ ] result and db
   - [ ] worker
-- [ ] labels and grouping
+- labels and grouping
   - <https://docs.tilt.dev/tiltfile_concepts.html#resource-groups>
-  - [ ] vote and redis
+  - [x] vote and redis
   - [ ] result and db
   - [ ] worker
 
