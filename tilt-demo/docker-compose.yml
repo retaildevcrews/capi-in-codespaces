@@ -29,6 +29,8 @@ services:
       interval: "5s"
     networks:
       - back-tier
+    ports:
+      - "6379:6379"
 
 networks:
   front-tier:

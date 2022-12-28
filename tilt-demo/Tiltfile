@@ -1,3 +1,5 @@
 # pyright: reportUndefinedVariable=false
 
 load('./Tiltfile-vote', 'voteAppURL')
+
+load('./Tiltfile-result', 'resultAppURL')

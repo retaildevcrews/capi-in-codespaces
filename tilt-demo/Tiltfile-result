@@ -1,0 +1,17 @@
+# pyright: reportUndefinedVariable=false
+
+resultAppURL = os.environ.get('RESULT_APP_URL', '')
+
+k8s_yaml(['./example-voting-app/k8s-specifications/result-deployment.yaml',
+          './example-voting-app/k8s-specifications/result-service.yaml',
+          './example-voting-app/k8s-specifications/db-deployment.yaml',
+          './example-voting-app/k8s-specifications/db-service.yaml'])
+
+k8s_resource('result',
+            links=[
+                link(resultAppURL, 'Result app')
+            ],
+            labels=['result'])
+
+k8s_resource('db',
+            labels=['result'])

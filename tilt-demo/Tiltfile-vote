@@ -6,7 +6,7 @@ docker_compose('./docker-compose.yml')
 
 dc_resource('vote',
             links=[
-                link(voteAppURL, 'Vote app (codespace)')
+                link(voteAppURL, 'Vote app')
             ],
             labels=['vote'])
 
