@@ -2,8 +2,6 @@
 
 TODO:
 
-- [ ] Clone repo into a different workspace instead of commiting it?
-  - ideal option if no code changes are required to get all desired scenarios working
 - [x] run vote app and redis in docker
   - <https://docs.tilt.dev/api.html#api.docker_compose>
 - [ ] run result app and db in k8s
@@ -31,6 +29,9 @@ TODO:
   - [x] vote and redis
   - [ ] result and db
   - [ ] worker
+- [ ] Clone repo into a different workspace instead of commiting it?
+  - ideal option if no code changes are required to get all desired scenarios working
+- [ ] How do port mappings and links change when codespaces is opened locally in vscode?
 
 ```bash
 
@@ -39,6 +40,10 @@ curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/instal
 
 # change into demo directory
 cd tilt-demo
+
+# set environment variables for apps
+VOTER_APP_PORT=5000
+export VOTE_APP_URL="https://${CODESPACE_NAME}-${VOTER_APP_PORT}.preview.app.github.dev"
 
 # start dev environment with tilt
 tilt up

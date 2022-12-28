@@ -1,16 +1,14 @@
 # pyright: reportUndefinedVariable=false
 
-codespaceName = os.environ.get('CODESPACE_NAME', '')
-voteAppPort = '5000'
-voteAppURL = 'https://%s-%s.preview.app.github.dev' % (
-    codespaceName, voteAppPort
-)
+voteAppURL = os.environ.get('VOTE_APP_URL', '')
 
 docker_compose('./docker-compose.yml')
+
 dc_resource('vote',
             links=[
                 link(voteAppURL, 'Vote app (codespace)')
             ],
             labels=['vote'])
+
 dc_resource('redis',
             labels=['vote'])
