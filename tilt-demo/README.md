@@ -8,7 +8,7 @@ TODO:
 - [x] multiple Tiltfiles for organization
 - [x] UI links and port forwards
 - [x] labels and grouping to organize UI
-- [ ] Clone repo into a different workspace instead of commiting it
+- [x] Clone repo into a different workspace instead of commiting it
 - [ ] diagram of setup
 - run-only mode vs edit mode
   - <https://docs.tilt.dev/tiltfile_config.html>
@@ -22,11 +22,15 @@ TODO:
   - [ ] what about when running locally **without** codespaces at all?
 - [ ] named ports in codespace devcontainer
 - [ ] disable auto port forwards to reduce the number of ports in the ports tab?
+- [ ] codespace: workspaces and editing files in a different workspace
 
 ```bash
 
 # install Tilt
 curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+
+# clone voting sample app
+git clone https://github.com/dockersamples/example-voting-app.git /workspaces/example-voting-app
 
 # change into demo directory
 cd tilt-demo
@@ -42,7 +46,7 @@ else
   echo "found tilt-demo in /etc/hosts. skip append"
 fi
 
-# create a clusters
+# create a cluster
 k3d cluster create --config ./k3d.yaml
 
 # set environment variables for apps

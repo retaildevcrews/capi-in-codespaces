@@ -5,9 +5,9 @@ placeholder = 'placeholder'
 
 local_resource('worker',
                '',
-               serve_dir='./example-voting-app/worker',
+               serve_dir='/workspaces/example-voting-app/worker',
                serve_cmd='dotnet run',
-               deps=['./example-voting-app/worker'],
-               ignore=['./example-voting-app/worker/bin',
-                       './example-voting-app/worker/obj'],
+               deps=['/workspaces/example-voting-app/worker'],
+               ignore=['/workspaces/example-voting-app/worker/bin',
+                       '/workspaces/example-voting-app/worker/obj'],
                labels=['worker'])
