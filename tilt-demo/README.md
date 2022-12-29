@@ -3,43 +3,25 @@
 TODO:
 
 - [x] run vote app and redis in docker
-  - <https://docs.tilt.dev/api.html#api.docker_compose>
-  - <https://docs.tilt.dev/api.html#api.dc_resource>
 - [x] run result app and db in k8s
-  - <https://docs.tilt.dev/api.html#api.k8s_yaml>
-  - <https://docs.tilt.dev/api.html#api.k8s_resource>
-- [ ] run worker app on host
-  - <https://docs.tilt.dev/api.html#api.local_resource>
-- multiple tiltfiles
-  - <https://docs.tilt.dev/api.html#api.load>
-  - <https://docs.tilt.dev/api.html#api.load_dynamic>
-  - [x] vote and redis
-  - [x] result and db
-  - [ ] worker
-- links and port forward
-  - <https://docs.tilt.dev/accessing_resource_endpoints.html#arbitrary-links>
-  - [x] vote and redis
-  - [x] result and db
-  - [ ] worker
-- labels and grouping
-  - <https://docs.tilt.dev/tiltfile_concepts.html#resource-groups>
-  - [x] vote and redis
-  - [x] result and db
-  - [ ] worker
-- [ ] Clone repo into a different workspace instead of commiting it?
-  - ideal option if no code changes are required to get all desired scenarios working
+- [x] run worker app directy on host
+- [x] multiple Tiltfiles for organization
+- [x] UI links and port forwards
+- [x] labels and grouping to organize UI
+- [ ] Clone repo into a different workspace instead of commiting it
+- [ ] diagram of setup
 - run-only mode vs edit mode
   - <https://docs.tilt.dev/tiltfile_config.html>
   - [ ] vote and redis. current is edit mode
-  - [ ] result and db. current is run-only mode using pre-existing images from dockerhub
-  - [ ] worker. dotnet build and run dll vs dotnet run on source?
+  - [ ] result and db. current is run-only mode
+  - [ ] worker. current is edit mode
 - [ ] auto reload vs manual reload
-  - TODO: maybe use redis and db for manual reload? or show how to toggle in the UI?
-- running locally?
+  - maybe use redis and db for manual reload? or show how to toggle in the UI?
+- using the tilt setup locally
   - [ ] How do port mappings and links change when codespaces is opened locally in vscode?
   - [ ] what about when running locally **without** codespaces at all?
-- [ ] name ports
-- [ ] disable auto port forward?
+- [ ] named ports in codespace devcontainer
+- [ ] disable auto port forwards to reduce the number of ports in the ports tab?
 
 ```bash
 
@@ -48,6 +30,17 @@ curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/instal
 
 # change into demo directory
 cd tilt-demo
+
+# add entries to hosts file.
+# the worker sample app is looking for specific host names and is not configurable without code changes
+if ! grep "tilt-demo" /etc/hosts
+then
+  echo "append db and redis to /etc/hosts"
+  echo '# tilt-demo' | sudo tee -a /etc/hosts
+  echo '127.0.0.1 db redis' | sudo tee -a /etc/hosts
+else
+  echo "found tilt-demo in /etc/hosts. skip append"
+fi
 
 # create a clusters
 k3d cluster create --config ./k3d.yaml
@@ -65,15 +58,27 @@ tilt up
 
 # view tilt ui
 # go to ports tab and open port 10350 in the browser to view tilt UI
-# 5000 is vote app running in docker compose
-# 31001 is result app running in kubernetes
+
+# other ports
+# vote app running in docker compose
+#   UI = 5000
+#   redis = 6379
+# result app running in kubernetes
+#   UI = 31001
+#   psql db = 5432
+# worker app is running on the host
 
 # in tilt UI
 # can also use the tilt UI to get to apps
 # each app has a link to the app
 # endpoints column when using the table view, top of page when using the details view
 
-# apps are groups together in the tiltfile configuration
+# click on the "Vote app" and "Result app" links in the Tilt UI to open in a new tab
+# The Results app shows 50/50 initially when there are no votes
+# Pick one of the options in te Vote app
+# Go back to the Results app and observe the change in the UI
+
+# Tilt was able to coordinate development of multiple apps, running in different environments. Get nice features like auto reloads and redeploys, single plane of glass UI with streaming logs, named links in UI, service grouping, and more.
 
 # type crtl + c to stop tilt
 

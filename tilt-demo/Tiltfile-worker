@@ -1,0 +1,13 @@
+# pyright: reportUndefinedVariable=false
+
+# TODO: export actual variable or figure out how to avoid placeholder
+placeholder = 'placeholder'
+
+local_resource('worker',
+               '',
+               serve_dir='./example-voting-app/worker',
+               serve_cmd='dotnet run',
+               deps=['./example-voting-app/worker'],
+               ignore=['./example-voting-app/worker/bin',
+                       './example-voting-app/worker/obj'],
+               labels=['worker'])

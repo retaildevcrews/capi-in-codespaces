@@ -3,3 +3,6 @@
 load('./Tiltfile-vote', 'voteAppURL')
 
 load('./Tiltfile-result', 'resultAppURL')
+
+# TODO: export actual variable or figure out how to avoid placeholder
+load('./Tiltfile-worker', 'placeholder')
