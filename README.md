@@ -42,7 +42,7 @@ For AKS, details of the Azure provider CRDs can be found [here](https://capz.sig
 
 ### Cluster API Visualizer
 
-[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer) provides a UI for visualizing the state of Cluster API in the management cluster.
+[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer#readme) provides a UI for visualizing the state of Cluster API in the management cluster.
 
 ```bash
 
