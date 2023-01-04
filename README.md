@@ -32,6 +32,29 @@ A list of Cluster API providers can be found [here](https://cluster-api.sigs.k8s
 
 Details on the Cluster API contract that providers need to follow can be found [here](https://cluster-api.sigs.k8s.io/developer/providers/contracts.html).
 
+### Cluster API CRDs
+
+Kubernetes clusters are described in cluster API as a combination of general Cluster API CRDs and provider specific CRDs. These CRDs represent the different parts of a Kubernetes cluster. For example, the cluster at a high level, the control plane, nodes, node pools, bootstrap configuration, etc.
+
+A diagram of the CRDs and their relationships can be found [here](https://cluster-api.sigs.k8s.io/developer/crd-relationships.html).
+
+For AKS, details of the Azure provider CRDs can be found [here](https://capz.sigs.k8s.io/topics/managedcluster.html#specification).
+
+### Cluster API Visualizer
+
+[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer#readme) provides a UI for visualizing the state of Cluster API in the management cluster.
+
+```bash
+
+# Add visualizer app to management cluster
+make capi-visualizer
+
+```
+
+In the "PORTS" tab, click the "Open in Browser" button for the visualizer app.
+
+![Open Cluster API Visualizer](images/open-capi-visualizer.png)
+
 ## kind
 
 Cluster API requires an existing Kubernetes cluster accessible via kubectl. During the installation process the Kubernetes cluster will be transformed into a management cluster by installing the Cluster API provider components, so it is recommended to keep it separated from any application workload.
@@ -71,7 +94,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   > --kubernetes-version v1.25.0 \
   > --control-plane-machine-count=1 \
   > --worker-machine-count=1 \
-  > capi-quickstart.yaml
+  > > capi-quickstart.yaml
   >
   > ```
 
@@ -82,6 +105,8 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   kubectl apply -f capi-quickstart.yaml
 
   ```
+
+  Refresh the browser tab for the Visualizer app to view the latest changes.
 
 - Access the workload cluster:
 
