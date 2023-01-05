@@ -16,28 +16,32 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
     # set az env variables
     if [ "$AZURE_SUBSCRIPTION_ID" != "" ]
     then
-      AZURE_SUBSCRIPTION_ID_B64="$(echo -n "$AZURE_SUBSCRIPTION_ID" | base64 | tr -d '\n')"
-      export AZURE_SUBSCRIPTION_ID_B64
+      echo "export AZURE_SUBSCRIPTION_ID_B64=$(echo -n "$AZURE_SUBSCRIPTION_ID" | base64 | tr -d '\n')"
     fi
 
     if [ "$AZURE_TENANT_ID" != "" ]
     then
-      AZURE_TENANT_ID_B64="$(echo -n "$AZURE_TENANT_ID" | base64 | tr -d '\n')"
-      export AZURE_TENANT_ID_B64
+      echo "export AZURE_TENANT_ID_B64=$(echo -n "$AZURE_TENANT_ID" | base64 | tr -d '\n')"
     fi
 
     if [ "$AZURE_CLIENT_ID" != "" ]
     then
-      AZURE_CLIENT_ID_B64="$(echo -n "$AZURE_CLIENT_ID" | base64 | tr -d '\n')"
-      export AZURE_CLIENT_ID_B64
+      echo "export AZURE_CLIENT_ID_B64=$(echo -n "$AZURE_CLIENT_ID" | base64 | tr -d '\n')"
     fi
 
     if [ "$AZURE_CLIENT_SECRET" != "" ]
     then
-      AZURE_CLIENT_SECRET_B64="$(echo -n "$AZURE_CLIENT_SECRET" | base64 | tr -d '\n')"
-      export AZURE_CLIENT_SECRET_B64
+      echo "export AZURE_CLIENT_SECRET_B64=$(echo -n "$AZURE_CLIENT_SECRET" | base64 | tr -d '\n')"
     fi
 
+    # Settings needed for AzureClusterIdentity used by the AzureCluster
+    echo "export AZURE_CLUSTER_IDENTITY_SECRET_NAME='cluster-identity-secret'"
+    echo "export CLUSTER_IDENTITY_NAME='cluster-identity'"
+    echo "export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE='default'"
+
+    # set vm type for Azure provider
+    echo "export AZURE_CONTROL_PLANE_MACHINE_TYPE='Standard_A2_v2'"
+    echo "export AZURE_NODE_MACHINE_TYPE='Standard_A2_v2'"
     echo "compinit"
 } >> "$HOME/.zshrc"
 
@@ -89,8 +93,13 @@ clusterctl completion zsh > "$HOME/.oh-my-zsh/completions/_clusterctl"
 # enable the experimental Cluster topology feature.
 export CLUSTER_TOPOLOGY=true
 
+# Create a secret to include the password of the Service Principal identity created in Azure
+# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
+
 # initialize the management cluster
 clusterctl init --infrastructure docker
+clusterctl init --infrastructure azure
 
 # The list of service CIDR, default ["10.128.0.0/12"]
 export SERVICE_CIDR=["10.96.0.0/12"]
