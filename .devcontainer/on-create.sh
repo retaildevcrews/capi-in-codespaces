@@ -42,6 +42,11 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
     # set vm type for Azure provider
     echo "export AZURE_CONTROL_PLANE_MACHINE_TYPE='Standard_A2_v2'"
     echo "export AZURE_NODE_MACHINE_TYPE='Standard_A2_v2'"
+
+    # set aks feature flag
+    echo "export EXP_MACHINE_POOL=true"
+    echo "export EXP_AKS=true"
+
     echo "compinit"
 } >> "$HOME/.zshrc"
 
