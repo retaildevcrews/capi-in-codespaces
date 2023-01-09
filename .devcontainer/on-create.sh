@@ -98,13 +98,13 @@ clusterctl completion zsh > "$HOME/.oh-my-zsh/completions/_clusterctl"
 # enable the experimental Cluster topology feature.
 export CLUSTER_TOPOLOGY=true
 
-# Create a secret to include the password of the Service Principal identity created in Azure
-# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
-kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
-
 # initialize the management cluster
 clusterctl init --infrastructure docker
 clusterctl init --infrastructure azure
+
+# Create a secret to include the password of the Service Principal identity created in Azure
+# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
 
 # The list of service CIDR, default ["10.128.0.0/12"]
 export SERVICE_CIDR=["10.96.0.0/12"]
