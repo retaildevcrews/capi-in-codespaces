@@ -6,12 +6,52 @@ echo "on-create start"
 echo "$(date +'%Y-%m-%d %H:%M:%S')    on-create start" >> "$HOME/status"
 
 export REPO_BASE=$PWD
+export EXP_MACHINE_POOL=true
+export EXP_AKS=true
+export AZURE_CLUSTER_IDENTITY_SECRET_NAME='cluster-identity-secret'
+export CLUSTER_IDENTITY_NAME='cluster-identity'
+export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE='default'
 
 mkdir -p "$HOME/.ssh"
 mkdir -p "$HOME/.oh-my-zsh/completions"
 
 {
     echo "export REPO_BASE=$REPO_BASE"
+
+    # set az env variables
+    if [ "$AZURE_SUBSCRIPTION_ID" != "" ]
+    then
+      echo "export AZURE_SUBSCRIPTION_ID_B64=$(echo -n "$AZURE_SUBSCRIPTION_ID" | base64 | tr -d '\n')"
+    fi
+
+    if [ "$AZURE_TENANT_ID" != "" ]
+    then
+      echo "export AZURE_TENANT_ID_B64=$(echo -n "$AZURE_TENANT_ID" | base64 | tr -d '\n')"
+    fi
+
+    if [ "$AZURE_CLIENT_ID" != "" ]
+    then
+      echo "export AZURE_CLIENT_ID_B64=$(echo -n "$AZURE_CLIENT_ID" | base64 | tr -d '\n')"
+    fi
+
+    if [ "$AZURE_CLIENT_SECRET" != "" ]
+    then
+      echo "export AZURE_CLIENT_SECRET_B64=$(echo -n "$AZURE_CLIENT_SECRET" | base64 | tr -d '\n')"
+    fi
+
+    # Settings needed for AzureClusterIdentity used by the AzureCluster
+    echo "export AZURE_CLUSTER_IDENTITY_SECRET_NAME=$AZURE_CLUSTER_IDENTITY_SECRET_NAME"
+    echo "export CLUSTER_IDENTITY_NAME=$CLUSTER_IDENTITY_NAME"
+    echo "export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE=$AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE"
+
+    # set vm type for Azure provider
+    echo "export AZURE_CONTROL_PLANE_MACHINE_TYPE='Standard_A2_v2'"
+    echo "export AZURE_NODE_MACHINE_TYPE='Standard_A2_v2'"
+
+    # set aks feature flag
+    echo "export EXP_MACHINE_POOL=$EXP_MACHINE_POOL"
+    echo "export EXP_AKS=$EXP_AKS"
+
     echo "compinit"
 } >> "$HOME/.zshrc"
 
@@ -65,6 +105,11 @@ export CLUSTER_TOPOLOGY=true
 
 # initialize the management cluster
 clusterctl init --infrastructure docker
+clusterctl init --infrastructure azure:v1.6.1
+
+# Create a secret to include the password of the Service Principal identity created in Azure
+# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
 
 # The list of service CIDR, default ["10.128.0.0/12"]
 export SERVICE_CIDR=["10.96.0.0/12"]
