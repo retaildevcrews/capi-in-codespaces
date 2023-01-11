@@ -84,7 +84,7 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
   --worker-machine-count=${WORKER_MACHINE_COUNT} \
   --infrastructure azure:v1.6.1 \
   --flavor aks \
-  > aks-cluster.yaml
+  > ${CLUSTER_NAME}.yaml
 
   ```
 
@@ -92,7 +92,7 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   ```bash
 
-  kubectl apply -f aks-cluster.yaml
+  kubectl apply -f ${CLUSTER_NAME}.yaml
 
   ```
 
@@ -108,6 +108,10 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   ```
 
+- While the cluster is being provisioned, open the Cluster API Visualizer app to view the current state of your clusters.
+  In the "PORTS" tab, click the "Open in Browser" button for the visualizer app.
+  ![Open Cluster API Visualizer](/images/open-capi-visualizer.png)
+
 - After the control plane node is up and running, we can retrieve the workload cluster Kubeconfig:
 
   ```bash
@@ -116,7 +120,7 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   # update KUBECONFIG so kubectl can access the different config files.
   # useful for easily switching kube contexts
-  export KUBECONFIG=~/.kube/config:/workspaces/capi-in-codespaces/$CLUSTER_NAME.kubeconfig
+  export KUBECONFIG="${KUBECONFIG}:/workspaces/capi-in-codespaces/${CLUSTER_NAME}.kubeconfig"
 
   ```
 
@@ -128,19 +132,11 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   ```
 
-## Clean up
+## Challenge
 
-- Once done experimenting, delete the workload AKS cluster, it's kubeconfig and Azure resource group:
+Now create another cluster on your own. In the new cluster, try using different values for one or more of the items below.
 
-  ```bash
-
-  kubectl delete cluster $CLUSTER_NAME
-  rm $CLUSTER_NAME.kubeconfig
-  rm aks-cluster.yaml
-  unset KUBECONFIG
-
-  # delete az resource group
-  az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
-  az group delete --name $AZURE_RESOURCE_GROUP
-
-  ```
+- Kubernetes version
+- Nodepool VM SKU
+- Azure location
+- Azure resource group

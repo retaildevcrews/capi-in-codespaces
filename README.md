@@ -106,7 +106,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
   ```
 
-  Refresh the browser tab for the Visualizer app to view the latest changes.
+- Refresh the browser tab for the Visualizer app to view the latest changes.
 
 - Access the workload cluster:
 
@@ -154,16 +154,8 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
   ```
 
-## Clean up
-
-- Once done experimenting, delete the workload cluster and it's kubeconfig:
-
-  ```bash
-
-  kubectl delete cluster capi-quickstart
-  rm capi-quickstart.kubeconfig
-  unset KUBECONFIG
-
-  ```
-
 > NOTE: For experimental and educational purpose, follow [this quickstart](https://cluster-api.sigs.k8s.io/user/quick-start.html) for the manual setup of CAPI and workload clusters
+
+## Next
+
+Continue on with [AKS scenarios](./docs/1-managed-aks-cluster.md). These labs will walk you through different aspects of managing AKS clusters with Cluster API and the Azure provider.
