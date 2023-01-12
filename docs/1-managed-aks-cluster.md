@@ -82,7 +82,7 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
   --kubernetes-version ${KUBERNETES_VERSION} \
   --control-plane-machine-count=${CONTROL_PLANE_MACHINE_COUNT} \
   --worker-machine-count=${WORKER_MACHINE_COUNT} \
-  --infrastructure azure:v1.6.1 \
+  --infrastructure azure:v1.7.0 \
   --flavor aks \
   > ${CLUSTER_NAME}.yaml
 
@@ -121,6 +121,9 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
   # update KUBECONFIG so kubectl can access the different config files.
   # useful for easily switching kube contexts
   export KUBECONFIG="${KUBECONFIG}:/workspaces/capi-in-codespaces/${CLUSTER_NAME}.kubeconfig"
+
+  # verify kubectl has access to the new context
+  kubectl config get-contexts
 
   ```
 

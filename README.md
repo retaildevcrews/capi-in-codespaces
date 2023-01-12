@@ -119,6 +119,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   clusterctl describe cluster capi-quickstart
 
   # verify the control plane is up
+  # INITIALIZED column should be true
   kubectl get kubeadmcontrolplane
 
   ```
@@ -134,6 +135,9 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   export KUBECONFIG=~/.kube/config:/workspaces/capi-in-codespaces/capi-quickstart.kubeconfig
 
   kubectl config rename-context capi-quickstart-admin@capi-quickstart capi-quickstart
+
+  # verify kubectl has access to the new context
+  kubectl config get-contexts
 
   ```
 
