@@ -1,0 +1,119 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: capz-kev-ms-aks
+  namespace: default
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks:
+      - 192.168.0.0/16
+  controlPlaneRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AzureManagedControlPlane
+    name: capz-kev-ms-aks
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AzureManagedCluster
+    name: capz-kev-ms-aks
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureManagedControlPlane
+metadata:
+  name: capz-kev-ms-aks
+  namespace: default
+spec:
+  identityRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AzureClusterIdentity
+    name: cluster-identity
+  location: eastus
+  resourceGroupName: capz-kev-ms-aks-rg
+  sshPublicKey: ""
+  subscriptionID: 5dc45b2f-bf13-4281-b763-a53f57290aa3
+  version: v1.25.2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureManagedCluster
+metadata:
+  name: capz-kev-ms-aks
+  namespace: default
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: pool0
+  namespace: default
+spec:
+  clusterName: capz-kev-ms-aks
+  replicas: 1
+  template:
+    metadata: {}
+    spec:
+      bootstrap:
+        dataSecretName: ""
+      clusterName: capz-kev-ms-aks
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: AzureManagedMachinePool
+        name: pool0
+      version: v1.25.2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureManagedMachinePool
+metadata:
+  name: pool0
+  namespace: default
+spec:
+  enableNodePublicIP: false
+  mode: System
+  osDiskSizeGB: 30
+  sku: Standard_A2_v2
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: pool1
+  namespace: default
+spec:
+  clusterName: capz-kev-ms-aks
+  replicas: 1
+  template:
+    metadata: {}
+    spec:
+      bootstrap:
+        dataSecretName: ""
+      clusterName: capz-kev-ms-aks
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: AzureManagedMachinePool
+        name: pool1
+      version: v1.25.2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureManagedMachinePool
+metadata:
+  name: pool1
+  namespace: default
+spec:
+  enableNodePublicIP: false
+  mode: User
+  osDiskSizeGB: 40
+  scaleSetPriority: Regular
+  sku: Standard_A2_v2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
+metadata:
+  labels:
+    clusterctl.cluster.x-k8s.io/move-hierarchy: "true"
+  name: cluster-identity
+  namespace: default
+spec:
+  allowedNamespaces: {}
+  clientID: 0bfb6cf4-8f3e-4195-bdf9-3a3b25102a33
+  clientSecret:
+    name: cluster-identity-secret
+    namespace: default
+  tenantID: 16b3c013-d300-468d-ac64-7eda0820b6d3
+  type: ServicePrincipal
