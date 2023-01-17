@@ -105,7 +105,7 @@ export CLUSTER_TOPOLOGY=true
 
 # initialize the management cluster
 clusterctl init --infrastructure docker
-clusterctl init --infrastructure azure:v1.6.1
+clusterctl init --infrastructure azure:v1.7.0
 
 # Create a secret to include the password of the Service Principal identity created in Azure
 # This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
