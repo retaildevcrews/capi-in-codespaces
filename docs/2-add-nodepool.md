@@ -1,4 +1,4 @@
-# Add Node Pools to an AKS Cluster
+# Add a NodePool to an AKS Cluster
 
 Diffrent application workloads need different compute resources. With the benefit of Kubernetes, you can have multiple node pools, each containing different types of instances/machines.
 
@@ -10,7 +10,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
 ## Add a Node Pool to an AKS Cluster
 
-- Set Environement variables
+- Validate and set required environement variables:
 
    ```bash
 
@@ -19,31 +19,36 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
    # set and validate required variables
    # Variable $CLUSTER_NAME should be same as your existing AKS cluster name
-   export POOL_NAME = aks-nodepool
+   # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter
+   export POOL_NAME=nodepoolaks
    echo $CLUSTER_NAME
 
    ```
 
-- Generate yaml
+- Generate the nodepool configuration:
 
   ```bash
 
-  clusterctl generate yaml --from ./templates/aks-nodepool.yaml > aks-nodepool.yaml
+  clusterctl generate yaml --from ./templates/aks-nodepool.yaml > capz-${POOL_NAME}.yaml
 
   ```
 
-- Apply the configuration to workload cluster
+- Apply the nodepool configuration to workload cluster:
 
   ```bash
 
-  kubectl apply -f aks-nodepool.yaml
+  kubectl apply -f capz-${POOL_NAME}.yaml
 
   ```
 
-- Validate new nodepool in AKS cluster resources
+- Validate new nodepool in AKS cluster resources:
 
   ```bash
 
   clusterctl describe cluster $CLUSTER_NAME
-  
+
   ```
+
+- Open the Cluster API Visualizer app to view the latest state of your AKS cluster with a newly added NodePool.
+  In the "PORTS" tab, click the "Open in Browser" button for the visualizer app.
+  ![Open Cluster API Visualizer](/images/open-capi-visualizer.png)
