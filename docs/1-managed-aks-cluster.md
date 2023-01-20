@@ -143,3 +143,7 @@ Now create another cluster on your own. In the new cluster, try using different 
 - Nodepool VM SKU
 - Azure location
 - Azure resource group
+
+## Next
+
+Continue with [Add a NodePool](./2-add-nodepool.md) section. This lab will walk you through adding an additional NodePool to provisioned AKS cluster.

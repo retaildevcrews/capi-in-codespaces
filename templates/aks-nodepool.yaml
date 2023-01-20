@@ -1,0 +1,31 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: ${CLUSTER_NAME}-${POOL_NAME}
+  namespace: default
+spec:
+  clusterName: ${CLUSTER_NAME}
+  replicas: 1
+  template:
+    metadata: {}
+    spec:
+      bootstrap:
+        dataSecretName: ""
+      clusterName: ${CLUSTER_NAME}
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: AzureManagedMachinePool
+        name: ${CLUSTER_NAME}-${POOL_NAME}
+      version: v1.25.2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureManagedMachinePool
+metadata:
+  name: ${CLUSTER_NAME}-${POOL_NAME}
+  namespace: default
+spec:
+  enableNodePublicIP: false
+  mode: System
+  name: ${POOL_NAME}
+  osDiskSizeGB: 30
+  sku: Standard_A2_v2
