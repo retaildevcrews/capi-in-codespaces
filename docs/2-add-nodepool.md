@@ -12,6 +12,10 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
 - Validate and set required environement variables:
 
+  > - Refer [clustercutl docs](https://cluster-api.sigs.k8s.io/clusterctl/commands/generate-yaml.html) to learn more about `clusterctl generate yaml` command
+
+  > - Refer [limitations](https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#limitations) for creating AKS nodepools
+
    ```bash
 
    # print list of variables used in the local template
@@ -19,7 +23,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
    # set and validate required variables
    # Variable $CLUSTER_NAME should be same as your existing AKS cluster name
-   # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter
+   # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
    export POOL_NAME=nodepoolaks
    echo $CLUSTER_NAME
 
