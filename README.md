@@ -1,10 +1,6 @@
-# capi-in-codespaces
+# capi-in-codespaces overview
 
-CAPI/CAPZ in GitHub Codespaces
-
-## Overview
-
-This is a template that will setup Cluster API using kind/k3d to provision other kubernetes clusters in a GitHub Codespaces using `Docker` infrastructure provider.
+This is a template that will setup Cluster API using kind/k3d to provision other kubernetes clusters in a GitHub Codespaces using `Docker` and `Azure` infrastructure provider.
 
 ## Cluster API overview
 
