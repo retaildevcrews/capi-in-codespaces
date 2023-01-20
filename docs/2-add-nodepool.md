@@ -12,8 +12,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
 - Validate and set required environement variables:
 
-  > - Refer [clustercutl docs](https://cluster-api.sigs.k8s.io/clusterctl/commands/generate-yaml.html) to learn more about `clusterctl generate yaml` command
-
+  > - Refer [clusterctl docs](https://cluster-api.sigs.k8s.io/clusterctl/commands/generate-yaml.html) to learn more about `clusterctl generate yaml` command
   > - Refer [limitations](https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#limitations) for creating AKS nodepools
 
    ```bash
