@@ -1,12 +1,16 @@
 # Provision AKS Cluster using CAPZ
 
-Cluster API Provider Azure (CAPZ) experimentally supports managing Azure Kubernetes Service (AKS) clusters. CAPZ implements this with three custom resources:
+Cluster API Provider Azure (CAPZ) supports managing Azure Kubernetes Service (AKS) clusters. CAPZ implements this with three custom resources:
 
 - AzureManagedControlPlane
 - AzureManagedCluster
 - AzureManagedMachinePool
 
 The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds to provisioning an AKS cluster. `AzureManagedMachinePool` corresponds one-to-one with AKS node pools.
+
+## Prerequisites
+
+TODO: instructions and commands for azure aks setup
 
 ## Deploy with clusterctl
 
@@ -16,7 +20,6 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   # Kubernetes values
   export CLUSTER_NAME=capz-$(echo $GITHUB_USER | tr '[:upper:]' '[:lower:]')-aks
-  export CONTROL_PLANE_MACHINE_COUNT=1
   export WORKER_MACHINE_COUNT=1
   # validate valid kubernetes version for a given location by running
   # az aks get-versions -l eastus
@@ -35,6 +38,8 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 - An Azure Service Principal is needed for deploying Azure resources. The below instructions utilize [environment-based authentication](https://docs.microsoft.com/en-us/go/azure/azure-sdk-go-authorization#use-environment-based-authentication).
 
   > NOTE: All the required environment variables are set as part of the devcontainer setup. For more information about authorization, AAD, or requirements for Azure, visit the [Azure provider prerequisites document](https://capz.sigs.k8s.io/topics/getting-started.html#prerequisites)
+
+  TODO: double check final list of env vars that will be set at the end of the task
 
   ```bash
 
@@ -80,7 +85,6 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   clusterctl generate cluster ${CLUSTER_NAME} \
   --kubernetes-version ${KUBERNETES_VERSION} \
-  --control-plane-machine-count=${CONTROL_PLANE_MACHINE_COUNT} \
   --worker-machine-count=${WORKER_MACHINE_COUNT} \
   --infrastructure azure:v1.7.0 \
   --flavor aks \

@@ -1,0 +1,21 @@
+# manual setp in docs
+az login
+
+# manual setp in docs
+az account set -s "TODO"
+
+# automate the rest of commands below
+export AZURE_SUBSCRIPTION_ID="TODO"
+
+export CAPI_SP_NAME="TODO"
+
+# let user know they'll need appropriate permissions in sub to do this
+# add note in main docs to open codespace in vscode locally if sub has management policies
+az ad sp create-for-rbac --name "${}" --role Contributor --scopes="/subscriptions/${AZURE_SUBSCRIPTION_ID}"
+
+export AZURE_CLIENT_SECRET="TODO"
+export AZURE_CLIENT_ID="TODO"
+
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}"
+
+clusterctl init --infrastructure azure:v1.7.0
