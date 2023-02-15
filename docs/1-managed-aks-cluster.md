@@ -10,7 +10,27 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
 ## Prerequisites
 
-TODO: instructions and commands for azure aks setup
+In order to create Azure resources, the Azure provider requires a service principal with sufficient permissions in the target subscription.
+
+Login with the az CLI.
+
+```bash
+
+az login
+
+```
+
+Set your desired subscription.
+
+```bash
+
+az account set -s "<subscription name or ID>"
+
+```
+
+### Setup service principal and credentials
+
+TODO: commands to create sp, k8s secret, stc
 
 ## Deploy with clusterctl
 

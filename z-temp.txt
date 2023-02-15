@@ -1,9 +1,3 @@
-# manual setp in docs
-az login
-
-# manual setp in docs
-az account set -s "TODO"
-
 # automate the rest of commands below
 export AZURE_SUBSCRIPTION_ID="TODO"
 
