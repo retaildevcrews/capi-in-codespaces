@@ -28,11 +28,19 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
    ```
 
-- Generate the nodepool configuration:
+- Generate the nodepool configuration. The generated file represents 1 AKS node pool. The file is separate from the previous yaml file that created the AKS cluster, showing that new Cluster API config files can be generated to manage node pools separately from the cluster.
 
   ```bash
 
   clusterctl generate yaml --from ./templates/aks-nodepool.yaml > capz-${POOL_NAME}.yaml
+
+  ```
+
+- Open the file to review the contents.
+
+  ```bash
+
+  code capz-${POOL_NAME}.yaml
 
   ```
 

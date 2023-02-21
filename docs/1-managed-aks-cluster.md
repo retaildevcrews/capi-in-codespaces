@@ -104,7 +104,7 @@ env | grep AZURE
 
   ```
 
-- Generate the cluster configuration:
+- Generate the cluster configuration. The generated file represents an AKS cluster with 1 system node pool and 1 user node pool. It contains the Cluster API resources, AzureManagedControlPlane, AzureManagedCluster, and AzureManagedMachinePool, that map to the AKS cluster and its node pools.
 
   ```bash
 
@@ -114,6 +114,14 @@ env | grep AZURE
   --infrastructure azure:v1.7.0 \
   --flavor aks \
   > ${CLUSTER_NAME}.yaml
+
+  ```
+
+- Open the file to review the contents.
+
+  ```bash
+
+  code ${CLUSTER_NAME}.yaml
 
   ```
 
