@@ -1,12 +1,66 @@
 # Provision AKS Cluster using CAPZ
 
-Cluster API Provider Azure (CAPZ) experimentally supports managing Azure Kubernetes Service (AKS) clusters. CAPZ implements this with three custom resources:
+Cluster API Provider Azure (CAPZ) supports managing Azure Kubernetes Service (AKS) clusters. CAPZ implements this with three custom resources:
 
 - AzureManagedControlPlane
 - AzureManagedCluster
 - AzureManagedMachinePool
 
 The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds to provisioning an AKS cluster. `AzureManagedMachinePool` corresponds one-to-one with AKS node pools.
+
+## Prerequisites
+
+In order to create Azure resources, the Azure provider requires a Service Principal with sufficient permissions in the target subscription.
+
+Login with the az CLI.
+
+```bash
+
+az login
+
+```
+
+Set your desired subscription.
+
+```bash
+
+az account set -s "<subscription name or ID>"
+
+# verify the desired account is selected
+az account show
+
+```
+
+### Setup Service Principal and credentials
+
+An Azure Service Principal is needed for deploying Azure resources. The below instructions utilize [environment-based authentication](https://docs.microsoft.com/en-us/go/azure/azure-sdk-go-authorization#use-environment-based-authentication).
+
+> NOTE: Some the required environment variables are set as part of the devcontainer setup. For more information about authorization, AAD, or requirements for Azure, visit the [Azure provider prerequisites document](https://capz.sigs.k8s.io/topics/getting-started.html#prerequisites)
+
+The script below will create a Service Principal, create a kubernetes secret with the Service principal credentials, then initialize the Azure provider in the Cluster API management cluster.
+You'll need sufficient permissions to create the Service Principal.
+
+```bash
+
+# Preview the commands for setting up the Azure provider
+code scripts/azure-provider-setup.sh
+
+# Run the script and save the exported environment variable
+source ./scripts/azure-provider-setup.sh
+
+# Validate env variables for Azure provider
+env | grep AZURE
+
+```
+
+- AZURE_CLUSTER_IDENTITY_SECRET_NAME
+- AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE
+- AZURE_TENANT_ID
+- AZURE_SUBSCRIPTION_ID
+- AZURE_CAPI_SP_NAME
+- AZURE_CLIENT_ID
+- AZURE_NODE_MACHINE_TYPE (Set as `Standard_A2_v2` for this lab)
+- AZURE_CONTROL_PLANE_MACHINE_TYPE (Set as `Standard_A2_v2` for this lab)
 
 ## Deploy with clusterctl
 
@@ -16,11 +70,10 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   # Kubernetes values
   export CLUSTER_NAME=capz-$(echo $GITHUB_USER | tr '[:upper:]' '[:lower:]')-aks
-  export CONTROL_PLANE_MACHINE_COUNT=1
   export WORKER_MACHINE_COUNT=1
   # validate valid kubernetes version for a given location by running
-  # az aks get-versions -l eastus
-  export KUBERNETES_VERSION="v1.25.2"
+  # az aks get-versions -l eastus -o table
+  export KUBERNETES_VERSION="v1.25.4"
 
   ```
 
@@ -31,29 +84,6 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
   export AZURE_RESOURCE_GROUP=$CLUSTER_NAME-rg
 
   ```
-
-- An Azure Service Principal is needed for deploying Azure resources. The below instructions utilize [environment-based authentication](https://docs.microsoft.com/en-us/go/azure/azure-sdk-go-authorization#use-environment-based-authentication).
-
-  > NOTE: All the required environment variables are set as part of the devcontainer setup. For more information about authorization, AAD, or requirements for Azure, visit the [Azure provider prerequisites document](https://capz.sigs.k8s.io/topics/getting-started.html#prerequisites)
-
-  ```bash
-
-   # validate env variables for authentication
-   env | grep AZURE
-
-  ```
-
-  - AZURE_SUBSCRIPTION_ID
-  - AZURE_SUBSCRIPTION_ID_B64
-  - AZURE_CLIENT_ID
-  - AZURE_CLIENT_ID_B64
-  - AZURE_CLIENT_SECRET
-  - AZURE_CLIENT_SECRET_B64
-  - AZURE_TENANT_ID
-  - AZURE_TENANT_ID_B64
-  - AZURE_CLUSTER_IDENTITY_SECRET_NAME
-  - AZURE_NODE_MACHINE_TYPE (Set as `Standard_A2_v2` for this lab)
-  - AZURE_CONTROL_PLANE_MACHINE_TYPE (Set as `Standard_A2_v2` for this lab)
 
   Managed cluster also requires AKS feature flags set in order to provision cluster using AKS flavor:
 
@@ -80,7 +110,6 @@ The combination of `AzureManagedControlPlane`/`AzureManagedCluster` corresponds 
 
   clusterctl generate cluster ${CLUSTER_NAME} \
   --kubernetes-version ${KUBERNETES_VERSION} \
-  --control-plane-machine-count=${CONTROL_PLANE_MACHINE_COUNT} \
   --worker-machine-count=${WORKER_MACHINE_COUNT} \
   --infrastructure azure:v1.7.0 \
   --flavor aks \
