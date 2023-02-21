@@ -12,11 +12,15 @@ The goal of this repository is to accelerate a user's onboarding to Cluster API 
 
 ![Create a codespace](/images/create-codespace.png)
 
-If you're using an Azure subscription with management policies that require AAD access from a managed machine, then connect to the newly created Codespace with VS Code Desktop.
+If you're using an Azure Subscription with management policies that require AAD access from a managed machine, then connect to the newly created Codespace with VS Code Desktop.
 
 ![Open Codespace command palette](/images/open-command-palette.png)
 
 ![Open in VS Code Desktop](/images/open-in-vscode-desktop.png)
+
+## Prerequisites
+
+The main README can be completed with only access to GitHub Codespaces. To continue on with the AKS documentation linked at the bottom of the page, you'll need access to an Azure Subscription with permissions to create a Service Principal.
 
 ## Cluster API overview
 
@@ -182,4 +186,4 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
 
 ## Next
 
-Continue on with [AKS scenarios](./docs/1-managed-aks-cluster.md). These labs will walk you through different aspects of managing AKS clusters with Cluster API and the Azure provider.
+Continue on with [AKS scenarios](./docs/1-managed-aks-cluster.md). These labs will walk you through different aspects of managing AKS clusters with Cluster API and the Azure provider. These require access to an Azure Subscription and permissions to create a Service Principal.
