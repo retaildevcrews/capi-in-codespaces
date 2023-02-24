@@ -69,7 +69,7 @@ kind create cluster --config .devcontainer/kind-extramounts.yaml
 #     --config '.devcontainer/k3d.yaml'
 
 echo "install clusterctl"
-curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.2.5/clusterctl-linux-amd64 -o clusterctl
+curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.3.3/clusterctl-linux-amd64 -o clusterctl
 chmod +x ./clusterctl
 sudo mv ./clusterctl /usr/local/bin/clusterctl
 
