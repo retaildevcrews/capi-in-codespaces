@@ -1,5 +1,7 @@
 # capi-in-codespaces overview
 
+![Cluster API Visualizer](/images/capi-visualizer.png)
+
 This repository leverages GitHub Codespaces to setup a Cluster API management cluster using kind, allowiwng the user to provision other kubernetes workload clusters using the `Docker` and `Azure` infrastructure providers.
 
 The goal of this repository is to accelerate a user's onboarding to Cluster API for managing AKS clusters, through guided hands-on learning scenarios. The different scenarios include optional challenges to help you further explore the capabilities of Cluster API and AKS.
