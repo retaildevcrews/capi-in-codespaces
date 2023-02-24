@@ -107,7 +107,7 @@ Cluster API requires an existing Kubernetes cluster accessible via kubectl. Duri
   > ```bash
   >
   > clusterctl generate cluster capi-quickstart --flavor development \
-  > --kubernetes-version v1.25.0 \
+  > --kubernetes-version v1.26.0 \
   > --control-plane-machine-count=1 \
   > --worker-machine-count=1 \
   > > capi-quickstart.yaml
