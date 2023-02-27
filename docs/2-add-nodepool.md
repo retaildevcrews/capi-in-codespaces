@@ -63,3 +63,9 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 - Open the Cluster API Visualizer app to view the latest state of your AKS cluster with a newly added NodePool.
   In the "PORTS" tab, click the "Open in Browser" button for the visualizer app.
   ![Open Cluster API Visualizer](/images/open-capi-visualizer.png)
+
+## Challenge
+
+The node pool created in this sections was a System mode node pool. Now create a User mode node pool.
+
+After creating a new User mode node pool, use `kubectl` to find all the AKS node pools that Cluster API is managing.
