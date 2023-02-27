@@ -152,7 +152,7 @@ spec:
                 plugins:
                 - name: PodSecurity
                   configuration:
-                    apiVersion: pod-security.admission.config.k8s.io/v1beta1
+                    apiVersion: pod-security.admission.config.k8s.io/v1{{ if semverCompare "< v1.25" .builtin.controlPlane.version }}beta1{{ end }}
                     kind: PodSecurityConfiguration
                     defaults:
                       enforce: "{{ .podSecurityStandard.enforce }}"
@@ -328,10 +328,10 @@ spec:
     pods:
       cidrBlocks:
       - 192.168.0.0/16
-    serviceDomain: k8s.test
+    serviceDomain: cluster.local
     services:
       cidrBlocks:
-      - 10.96.0.0/12
+      - 10.128.0.0/12
   topology:
     class: quick-start
     controlPlane:
@@ -350,7 +350,7 @@ spec:
         enabled: true
         enforce: baseline
         warn: restricted
-    version: v1.25.0
+    version: v1.26.0
     workers:
       machineDeployments:
       - class: default-worker

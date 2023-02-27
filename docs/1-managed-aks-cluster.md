@@ -73,7 +73,7 @@ env | grep AZURE
   export WORKER_MACHINE_COUNT=1
   # validate valid kubernetes version for a given location by running
   # az aks get-versions -l eastus -o table
-  export KUBERNETES_VERSION="v1.25.4"
+  export KUBERNETES_VERSION="v1.25.5"
 
   ```
 
@@ -111,7 +111,7 @@ env | grep AZURE
   clusterctl generate cluster ${CLUSTER_NAME} \
   --kubernetes-version ${KUBERNETES_VERSION} \
   --worker-machine-count=${WORKER_MACHINE_COUNT} \
-  --infrastructure azure:v1.7.0 \
+  --infrastructure azure:v1.7.2 \
   --flavor aks \
   > ${CLUSTER_NAME}.yaml
 
