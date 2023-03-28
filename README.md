@@ -59,6 +59,14 @@ A diagram of the CRDs and their relationships can be found [here](https://cluste
 
 For AKS, details of the Azure provider CRDs can be found [here](https://capz.sigs.k8s.io/topics/managedcluster.html#specification).
 
+## Labs
+
+| Lab  | Title | Description |
+| ------------- | ------------- | -------- |
+| Lab 1 | CAPI with kind | Provision a kind cluster using CAPI and the ??? provider|
+| Lab 2 | CAPI with AKS  | Provision AKS Cluster using CAPI and the Azure Provider |
+| Lab 3 | CAPI with AKS  | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+
 ### Cluster API Visualizer
 
 [Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer#readme) provides a UI for visualizing the state of Cluster API in the management cluster.
