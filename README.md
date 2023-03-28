@@ -17,7 +17,7 @@ The goal of this repository is to provide an environment that accelerates a user
 | :exclamation:  This is very important   |
 |-----------------------------------------|
 
-> :exclamation: NOTE
+> **Note**
 > If you're using an Azure Subscription with [conditional access policies](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview) that require Azure Active Directory access from a managed device, then connect to the newly created Codespace with VS Code Desktop running on a managed device.
 
 ![Open Codespace command palette](/images/open-command-palette.png)
