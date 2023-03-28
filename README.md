@@ -1,10 +1,10 @@
 # capi-in-codespaces overview
 
+This repository leverages GitHub Codespaces to setup a Cluster API management cluster using [kind](https://kind.sigs.k8s.io/), allowing the user to provision other kubernetes workload clusters using the `Docker` and `Azure` infrastructure providers.
+
+The goal of this repository is to provide an environment that accelerates a user's ability to start using Cluster API for managing AKS clusters.   The repository contains guided hands-on learning scenarios to familiarize users with Cluster API. The different scenarios include optional challenges to help you further explore the capabilities of Cluster API and AKS.
+
 ![Cluster API Visualizer](/images/capi-visualizer.png)
-
-This repository leverages GitHub Codespaces to setup a Cluster API management cluster using kind, allowiwng the user to provision other kubernetes workload clusters using the `Docker` and `Azure` infrastructure providers.
-
-The goal of this repository is to accelerate a user's onboarding to Cluster API for managing AKS clusters, through guided hands-on learning scenarios. The different scenarios include optional challenges to help you further explore the capabilities of Cluster API and AKS.
 
 ## Open in Codespace
 
@@ -14,7 +14,11 @@ The goal of this repository is to accelerate a user's onboarding to Cluster API 
 
 ![Create a codespace](/images/create-codespace.png)
 
-If you're using an Azure Subscription with management policies that require AAD access from a managed machine, then connect to the newly created Codespace with VS Code Desktop.
+| :exclamation:  This is very important   |
+|-----------------------------------------|
+
+> :bowtie: `:bowtie:`
+> If you're using an Azure Subscription with [conditional access policies](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview) that require Azure Active Directory access from a managed device, then connect to the newly created Codespace with VS Code Desktop running on a managed device.
 
 ![Open Codespace command palette](/images/open-command-palette.png)
 
