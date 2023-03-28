@@ -25,15 +25,15 @@ The goal of this repository is to provide an environment that accelerates a user
 
 The main README can be completed with only access to GitHub Codespaces. To continue on with the AKS documentation linked at the bottom of the page, you'll need access to an Azure Subscription with permissions to create a Service Principal.
 
-## Cluster API overview
+## What is Cluster API?
 
-[Cluster API documentation](https://cluster-api.sigs.k8s.io/)
-
-> Cluster API is a Kubernetes sub-project focused on providing declarative APIs and tooling to simplify provisioning, upgrading, and operating multiple Kubernetes clusters.
+Cluster API is a Kubernetes sub-project focused on providing declarative APIs and tooling to simplify provisioning, upgrading, and operating multiple Kubernetes clusters.
 
 One benefit of Cluster API is a common interface for managing Kubernetes clusters across different infrastructure providers like Azure, AWS, GCP, and more.
 
 A diagram showing the different components can be found [here](https://cluster-api.sigs.k8s.io/user/concepts.html).
+
+[Additional Cluster API documentation](https://cluster-api.sigs.k8s.io/)
 
 ### Cluster API controllers
 
