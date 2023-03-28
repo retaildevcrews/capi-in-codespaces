@@ -61,11 +61,11 @@ For AKS, details of the Azure provider CRDs can be found [here](https://capz.sig
 
 ## Labs
 
-| Lab  | Title | Description |
-| ------------- | ------------- | -------- |
-| Lab 1 | CAPI with kind | Provision a kind cluster using CAPI and the ??? provider|
-| Lab 2 | CAPI with AKS  | Provision AKS Cluster using CAPI and the Azure Provider |
-| Lab 3 | CAPI with AKS  | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| Lab  | Description |
+| ------------- | -------- |
+| Lab 1 | Provision a kind cluster using CAPI and the ??? provider|
+| Lab 2 | Provision AKS Cluster using CAPI and the Azure Provider |
+| Lab 3 | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
 
 ### Cluster API Visualizer
 
