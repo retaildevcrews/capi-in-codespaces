@@ -89,3 +89,7 @@ Kubernetes clusters are described in cluster API as a combination of general Clu
 A diagram of the CRDs and their relationships can be found [here](https://cluster-api.sigs.k8s.io/developer/crd-relationships.html).
 
 For AKS, details of the Azure provider CRDs can be found [here](https://capz.sigs.k8s.io/topics/managedcluster.html#specification).
+
+## Next
+
+Start [Lab 1 - Provision a kind cluster using CAPI and the CAPD provider](./docs/0-kind-cluster.md). This lab will walk you through provsioning a kind cluster using CAPD.
