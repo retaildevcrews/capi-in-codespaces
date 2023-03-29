@@ -33,7 +33,7 @@ A diagram showing the different components can be found [here](https://cluster-a
 
 ## Prerequisites
 
-The main README can be completed with only access to GitHub Codespaces. To continue on with the AKS documentation linked at the bottom of the page, you'll need access to an Azure Subscription with permissions to create a Service Principal.
+The Lab 1 completed with only access to GitHub Codespaces. To complete Lab 2 and Lab 3, you will need access to an Azure Subscription with permissions to create a Service Principal.
 
 ## Cluster API Visualizer
 
