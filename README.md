@@ -55,7 +55,7 @@ To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Ope
 
 ## Labs
 
-> **NOTE**
+> **Note**
 > Labs should be completed in order from 1-3
 
 | Lab  | Description |

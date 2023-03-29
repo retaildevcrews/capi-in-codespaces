@@ -117,6 +117,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
     ```
 
-> **NOTE** For further experimentation and education, follow [this quickstart](https://cluster-api.sigs.k8s.io/user/quick-start.html) for the manual setup of CAPI and workload clusters
+> **Note**
+> For further experimentation and education, follow [this quickstart](https://cluster-api.sigs.k8s.io/user/quick-start.html) for the manual setup of CAPI and workload clusters
 
 **NEXT LAB:** [Lab 2 - Provision AKS Cluster using CAPI and the Azure Provider](./docs/1-managed-aks-cluster.md)
