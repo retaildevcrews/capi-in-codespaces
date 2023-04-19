@@ -60,9 +60,10 @@ To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Ope
 
 | Lab  | Description |
 | ------------- | -------- |
-| [Lab 1](./docs/0-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
-| [Lab 2](./docs/1-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
-| [Lab 3](./docs/2-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| [Lab 1](./docs/1-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
+| [Lab 2](./docs/2-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
+| [Lab 3](./docs/3-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| [Lab 4](./docs/4-upgrade-k8s.md) | Upgrade AKS control plane and node pools |
 
 ## Cluster API Components
 
