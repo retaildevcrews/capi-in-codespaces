@@ -180,4 +180,4 @@ Now create another cluster on your own. In the new cluster, try using different 
 
 ## Next
 
-Continue with [Add a NodePool](./2-add-nodepool.md) section. This lab will walk you through adding an additional NodePool to provisioned AKS cluster.
+Continue with [Add a NodePool](./3-add-nodepool.md) section. This lab will walk you through adding an additional NodePool to provisioned AKS cluster.
