@@ -33,7 +33,7 @@ A diagram showing the different components can be found [here](https://cluster-a
 
 ## Prerequisites
 
-The Lab 1 completed with only access to GitHub Codespaces. To complete Lab 2 and Lab 3, you will need access to an Azure Subscription with permissions to create a Service Principal.
+The Lab 1 completed with only access to GitHub Codespaces. To complete the rest of the labs, you will need access to an Azure Subscription with permissions to create a Service Principal.
 
 ## Cluster API Visualizer
 
@@ -56,7 +56,7 @@ To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Ope
 ## Labs
 
 > **Note**
-> Labs should be completed in order from 1-3
+> Labs should be completed in order, starting from Lab 1
 
 | Lab  | Description |
 | ------------- | -------- |
@@ -93,4 +93,4 @@ For AKS, details of the Azure provider CRDs can be found [here](https://capz.sig
 
 ## Next
 
-Start [Lab 1 - Provision a kind cluster using CAPI and the CAPD provider](./docs/0-kind-cluster.md). This lab will walk you through provsioning a kind cluster using CAPD.
+Start [Lab 1 - Provision a kind cluster using CAPI and the CAPD provider](./docs/1-kind-cluster.md). This lab will walk you through provsioning a kind cluster using CAPD.
