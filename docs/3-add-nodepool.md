@@ -75,3 +75,7 @@ code capz-${POOL_NAME}.yaml
 ```
 
 After creating a new User node pool, use `kubectl` to find all the AKS node pools that Cluster API is managing.
+
+## Next
+
+Continue with [Upgrade AKS version](./4-upgrade-k8s.md) lab. This lab will walk you through upgrading your AKS cluster and node pools.
