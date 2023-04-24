@@ -74,7 +74,7 @@ env | grep AZURE
 
     # validate valid kubernetes version for a given location by running
     # az aks get-versions -l eastus -o table
-    export KUBERNETES_VERSION="v1.25.5"
+    export KUBERNETES_VERSION="v1.25.6"
 
     # Azure values
     export AZURE_LOCATION="eastus"
