@@ -1,0 +1,4 @@
+spec:
+  template:
+    spec:
+      version: ${KUBERNETES_VERSION}
