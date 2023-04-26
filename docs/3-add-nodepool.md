@@ -6,7 +6,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
 ## Prerequisites
 
-- An existing AKS Cluster (Refer [this guide](./1-managed-aks-cluster.md) to create one)
+- An existing AKS Cluster (Refer [this guide](./2-managed-aks-cluster.md) to create one)
 
 ## Lab Steps
 

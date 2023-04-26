@@ -66,6 +66,8 @@ env | grep AZURE
 
 1. A clusterctl flavor exists to deploy an AKS cluster with CAPZ. This flavor requires the following environment variables to be set before executing clusterctl.
 
+    > NOTE: When choosing a version of Kubernetes, ensure that it is at least N-1 of the latest version of Kubernetes supported by AKS. This will ensure that the cluster has an available version to upgrade to in the later labs.
+
     ```bash
 
     # Kubernetes values
@@ -73,7 +75,9 @@ env | grep AZURE
     export WORKER_MACHINE_COUNT=1
 
     # validate valid kubernetes version for a given location by running
-    # az aks get-versions -l eastus -o table
+    az aks get-versions -l eastus -o table
+
+    # set the desired kubernetes version to a one that has available upgrades
     export KUBERNETES_VERSION="v1.25.6"
 
     # Azure values
