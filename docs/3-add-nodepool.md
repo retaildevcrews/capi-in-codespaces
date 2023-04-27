@@ -6,7 +6,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
 ## Prerequisites
 
-- An existing AKS Cluster (Refer [this guide](./1-managed-aks-cluster.md) to create one)
+- An existing AKS Cluster (Refer [this guide](./2-managed-aks-cluster.md) to create one)
 
 ## Lab Steps
 
@@ -75,3 +75,7 @@ code capz-${POOL_NAME}.yaml
 ```
 
 After creating a new User node pool, use `kubectl` to find all the AKS node pools that Cluster API is managing.
+
+## Next
+
+Continue with [Upgrade AKS version](./4-upgrade-k8s.md) lab. This lab will walk you through upgrading your AKS cluster and node pools.

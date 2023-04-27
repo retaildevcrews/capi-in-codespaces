@@ -122,4 +122,4 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
 ## Next
 
-Continue with [Lab 2 - Provision AKS Cluster using CAPI and the Azure Provider](./1-managed-aks-cluster.md). This lab will walk you through provsioning an AKS cluster using CAPZ, the Azure provider for CAPI.
+Continue with [Lab 2 - Provision AKS Cluster using CAPI and the Azure Provider](./2-managed-aks-cluster.md). This lab will walk you through provsioning an AKS cluster using CAPZ, the Azure provider for CAPI.

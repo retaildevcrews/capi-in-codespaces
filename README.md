@@ -33,7 +33,7 @@ A diagram showing the different components can be found [here](https://cluster-a
 
 ## Prerequisites
 
-The Lab 1 completed with only access to GitHub Codespaces. To complete Lab 2 and Lab 3, you will need access to an Azure Subscription with permissions to create a Service Principal.
+The Lab 1 completed with only access to GitHub Codespaces. To complete the rest of the labs, you will need access to an Azure Subscription with permissions to create a Service Principal.
 
 ## Cluster API Visualizer
 
@@ -56,13 +56,14 @@ To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Ope
 ## Labs
 
 > **Note**
-> Labs should be completed in order from 1-3
+> Labs should be completed in order, starting from Lab 1
 
 | Lab  | Description |
 | ------------- | -------- |
-| [Lab 1](./docs/0-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
-| [Lab 2](./docs/1-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
-| [Lab 3](./docs/2-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| [Lab 1](./docs/1-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
+| [Lab 2](./docs/2-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
+| [Lab 3](./docs/3-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| [Lab 4](./docs/4-upgrade-k8s.md) | Upgrade AKS control plane and node pools |
 
 ## Cluster API Components
 
@@ -92,4 +93,4 @@ For AKS, details of the Azure provider CRDs can be found [here](https://capz.sig
 
 ## Next
 
-Start [Lab 1 - Provision a kind cluster using CAPI and the CAPD provider](./docs/0-kind-cluster.md). This lab will walk you through provsioning a kind cluster using CAPD.
+Start [Lab 1 - Provision a kind cluster using CAPI and the CAPD provider](./docs/1-kind-cluster.md). This lab will walk you through provsioning a kind cluster using CAPD.

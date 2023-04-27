@@ -1,0 +1,2 @@
+spec:
+  version: ${KUBERNETES_VERSION}
