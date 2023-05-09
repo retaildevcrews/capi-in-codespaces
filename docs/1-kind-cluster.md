@@ -87,11 +87,13 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
     ```bash
 
-    clusterctl get kubeconfig capi-quickstart > capi-quickstart.kubeconfig
+    mkdir -p generated
+
+    clusterctl get kubeconfig capi-quickstart > generated/capi-quickstart.kubeconfig
 
     # update KUBECONFIG so kubectl can access the different config files.
     # useful for easily switching kube contexts
-    export KUBECONFIG=~/.kube/config:/workspaces/capi-in-codespaces/capi-quickstart.kubeconfig
+    export KUBECONFIG=~/.kube/config:/workspaces/capi-in-codespaces/generated/capi-quickstart.kubeconfig
 
     kubectl config rename-context capi-quickstart-admin@capi-quickstart capi-quickstart
 
