@@ -17,20 +17,35 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
       ```bash
 
-      # print list of variables used in the local template
+      # print list of variables used in the local template, some of the variables are not required as they have set defaults in the template
       clusterctl generate yaml --from ./templates/aks-nodepool.yaml --list-variables
 
       # set and validate required variables
       # Variable $CLUSTER_NAME should be same as your existing AKS cluster name
       echo $CLUSTER_NAME
+
       # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
       export POOL_NAME=nodepoolaks
+      echo $POOL_NAME
+      ```
+
+      ```bash
+
+
       # There are a lot of SKU's for VM's and some are limited by region, for more information see https://learn.microsoft.com/en-us/azure/virtual-machines/sizes this tool is also avaliable for finding an appropriate SKU
-      export POOL_MACHINE_SKU=Standard_A2_v2
-
-
-      # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
-
+      export POOL_MACHINE_SKU=Standard_A2_v2 # If not set defaults to Standard_A2_v2
+      echo $POOL_MACHINE_SKU
+      # Pool mode is used to designate node pool as a System or User node pool, acceptable values are User or System
+      export POOL_MODE=User # If not set defaults to User
+      echo $POOL_MODE
+      # Pool disk size sets the disk size for the OS
+      export POOL_DISK_SIZE=40 # If not set defaults to 30
+      echo $POOL_DISK_SIZE
+      # Pool min and max size sets parameters for autoscaler to use for minumum and maximum counts of nodes in the node pool
+      export POOL_MIN_SIZE=1 # If not set defaults to 1
+      export POOL_MAX_SIZE=2 # If not set defaults to 1
+      echo $POOL_MIN_SIZE
+      echo $POOL_MAX_SIZE
       ```
 
 2. Generate the nodepool configuration. The generated file represents 1 AKS node pool. The file is separate from the previous yaml file that created the AKS cluster, showing that new Cluster API config files can be generated to manage node pools separately from the cluster.
