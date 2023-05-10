@@ -25,7 +25,7 @@ metadata:
   namespace: default
 spec:
   enableNodePublicIP: false
-  mode: System
+  mode: User
   name: ${POOL_NAME}
   osDiskSizeGB: 30
   sku: ${POOL_MACHINE_SKU}
