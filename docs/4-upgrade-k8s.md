@@ -38,10 +38,10 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
     ```bash
 
     # generate a patch file with the new version
-    clusterctl generate yaml --from ./templates/aks-upgrade.yaml > aks-upgrade-patch.yaml
+    clusterctl generate yaml --from ./templates/aks-upgrade.yaml > generated/aks-upgrade-patch.yaml
 
     # patch the target cluster
-    kubectl patch azuremanagedcontrolplane $CLUSTER_NAME --patch-file aks-upgrade-patch.yaml --type=merge
+    kubectl patch azuremanagedcontrolplane $CLUSTER_NAME --patch-file generated/aks-upgrade-patch.yaml --type=merge
 
     ```
 
@@ -70,7 +70,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
     ```bash
 
     # generate a patch file with the new version
-    clusterctl generate yaml --from ./templates/aks-nodepool-upgrade.yaml > aks-nodepool-upgrade-patch.yaml
+    clusterctl generate yaml --from ./templates/aks-nodepool-upgrade.yaml > generated/aks-nodepool-upgrade-patch.yaml
 
     # view the current machine pools on the target cluster
     kubectl get machinepool -l "cluster.x-k8s.io/cluster-name=${CLUSTER_NAME}"
@@ -79,7 +79,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
     export UPGRADE_POOL_NAME="${CLUSTER_NAME}-pool0"
 
     # patch the target node pool
-    kubectl patch machinepool $UPGRADE_POOL_NAME --patch-file aks-nodepool-upgrade-patch.yaml --type=merge
+    kubectl patch machinepool $UPGRADE_POOL_NAME --patch-file generated/aks-nodepool-upgrade-patch.yaml --type=merge
 
     ```
 

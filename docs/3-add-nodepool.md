@@ -32,7 +32,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
     ```bash
 
-    clusterctl generate yaml --from ./templates/aks-nodepool.yaml > capz-${POOL_NAME}.yaml
+    clusterctl generate yaml --from ./templates/aks-nodepool.yaml > "generated/capz-${POOL_NAME}.yaml"
 
     ```
 
@@ -40,7 +40,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
     ```bash
 
-    code capz-${POOL_NAME}.yaml
+    code "generated/capz-${POOL_NAME}.yaml"
 
     ```
 
@@ -48,7 +48,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
     ```bash
 
-    kubectl apply -f capz-${POOL_NAME}.yaml
+    kubectl apply -f "generated/capz-${POOL_NAME}.yaml"
 
     ```
 
@@ -70,7 +70,7 @@ The node pool created in this section was a System node pool with 1 node. Now cr
 
 ```bash
 
-code capz-${POOL_NAME}.yaml
+code "generated/capz-${POOL_NAME}.yaml"
 
 ```
 

@@ -114,7 +114,7 @@ env | grep AZURE
     --worker-machine-count=${WORKER_MACHINE_COUNT} \
     --infrastructure azure:v1.7.2 \
     --flavor aks \
-    > ${CLUSTER_NAME}.yaml
+    > "generated/${CLUSTER_NAME}.yaml"
 
     ```
 
@@ -122,7 +122,7 @@ env | grep AZURE
 
     ```bash
 
-    code ${CLUSTER_NAME}.yaml
+    code "generated/${CLUSTER_NAME}.yaml"
 
     ```
 
@@ -130,7 +130,7 @@ env | grep AZURE
 
     ```bash
 
-    kubectl apply -f ${CLUSTER_NAME}.yaml
+    kubectl apply -f "generated/${CLUSTER_NAME}.yaml"
 
     ```
 
@@ -154,11 +154,11 @@ env | grep AZURE
 
     ```bash
 
-    clusterctl get kubeconfig $CLUSTER_NAME > $CLUSTER_NAME.kubeconfig
+    clusterctl get kubeconfig $CLUSTER_NAME > "generated/$CLUSTER_NAME.kubeconfig"
 
     # update KUBECONFIG so kubectl can access the different config files.
     # useful for easily switching kube contexts
-    export KUBECONFIG="${KUBECONFIG}:/workspaces/capi-in-codespaces/${CLUSTER_NAME}.kubeconfig"
+    export KUBECONFIG="${KUBECONFIG}:/workspaces/capi-in-codespaces/generated/${CLUSTER_NAME}.kubeconfig"
 
     # verify kubectl has access to the new context
     kubectl config get-contexts
