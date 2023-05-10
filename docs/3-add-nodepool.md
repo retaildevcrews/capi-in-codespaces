@@ -22,9 +22,14 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
 
       # set and validate required variables
       # Variable $CLUSTER_NAME should be same as your existing AKS cluster name
+      echo $CLUSTER_NAME
       # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
       export POOL_NAME=nodepoolaks
-      echo $CLUSTER_NAME
+      # There are a lot of SKU's for VM's and some are limited by region, for more information see https://learn.microsoft.com/en-us/azure/virtual-machines/sizes this tool is also avaliable for finding an appropriate SKU
+      export POOL_MACHINE_SKU=Standard_A2_v2
+
+
+      # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
 
       ```
 

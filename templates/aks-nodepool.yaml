@@ -28,4 +28,4 @@ spec:
   mode: System
   name: ${POOL_NAME}
   osDiskSizeGB: 30
-  sku: Standard_A2_v2
+  sku: ${POOL_MACHINE_SKU}
