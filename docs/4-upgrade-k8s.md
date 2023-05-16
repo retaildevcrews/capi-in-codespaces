@@ -29,6 +29,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 
     ```bash
 
+    # TODO: get new k8s version tp upgrade to
     export KUBERNETES_VERSION=1.26.0
 
     ```
@@ -98,3 +99,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 ## Challenge
 
 The AKS cluster and one of the node pools have been upgraded to a newer version of Kubernetes. Now, try upgrading the rest of the node pools in the cluster to the same version.
+
+## Next
+
+[TODO](./5-custom-cluster-configuration.md)
