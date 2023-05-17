@@ -27,10 +27,10 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
       # The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters
       export POOL_NAME=nodepoolaks
       echo $POOL_NAME
+
       ```
 
       ```bash
-
 
       # There are a lot of SKU's for VM's and some are limited by region, for more information see https://learn.microsoft.com/en-us/azure/virtual-machines/sizes this tool is also avaliable for finding an appropriate SKU
       export POOL_MACHINE_SKU=Standard_A2_v2 # If not set defaults to Standard_A2_v2
@@ -46,6 +46,7 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
       export POOL_MAX_SIZE=2 # If not set defaults to 1
       echo $POOL_MIN_SIZE
       echo $POOL_MAX_SIZE
+
       ```
 
 2. Generate the nodepool configuration. The generated file represents 1 AKS node pool. The file is separate from the previous yaml file that created the AKS cluster, showing that new Cluster API config files can be generated to manage node pools separately from the cluster.

@@ -29,8 +29,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 
     ```bash
 
-    # TODO: get new k8s version tp upgrade to
-    export KUBERNETES_VERSION=1.26.0
+    export KUBERNETES_VERSION=1.26.3
 
     ```
 
@@ -102,4 +101,4 @@ The AKS cluster and one of the node pools have been upgraded to a newer version 
 
 ## Next
 
-[TODO](./5-custom-cluster-configuration.md)
+Continue with [Congifure custom cluster](./5-configure-custom-cluster.md) lab. This lab will walk you through configuring custom clusters with custom templates.

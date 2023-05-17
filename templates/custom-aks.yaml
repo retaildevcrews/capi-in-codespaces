@@ -31,7 +31,7 @@ spec:
   location: "${AZURE_LOCATION}"
   version: "${KUBERNETES_VERSION}"
   apiServerAccessProfile:
-    enablePrivateCluster: false
+    enablePrivateCluster: ${PRIVATE_CLUSTER:=false}
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: AzureManagedCluster
