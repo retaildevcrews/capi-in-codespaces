@@ -29,7 +29,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 
     ```bash
 
-    export KUBERNETES_VERSION=1.26.0
+    export KUBERNETES_VERSION=1.26.3
 
     ```
 
@@ -98,3 +98,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 ## Challenge
 
 The AKS cluster and one of the node pools have been upgraded to a newer version of Kubernetes. Now, try upgrading the rest of the node pools in the cluster to the same version.
+
+## Next
+
+Continue with [Congifure custom cluster](./5-configure-custom-cluster.md) lab. This lab will walk you through configuring custom clusters with custom templates.
