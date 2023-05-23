@@ -64,6 +64,7 @@ To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Ope
 | [Lab 2](./docs/2-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
 | [Lab 3](./docs/3-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
 | [Lab 4](./docs/4-upgrade-k8s.md) | Upgrade AKS control plane and node pools |
+| [Lab 5](./docs/5-configure-custom-cluster.md) | Create custom clusters with custom templates |
 
 ## Cluster API Components
 
