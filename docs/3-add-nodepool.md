@@ -35,17 +35,24 @@ In this walktrhough, we will create new node pools in your existing AKS cluster 
       # There are a lot of SKU's for VM's and some are limited by region, for more information see https://learn.microsoft.com/en-us/azure/virtual-machines/sizes this tool is also avaliable for finding an appropriate SKU
       export POOL_MACHINE_SKU=Standard_A2_v2 # If not set defaults to Standard_A2_v2
       echo $POOL_MACHINE_SKU
+
       # Pool mode is used to designate node pool as a System or User node pool, acceptable values are User or System
       export POOL_MODE=User # If not set defaults to User
       echo $POOL_MODE
+
       # Pool disk size sets the disk size for the OS
       export POOL_DISK_SIZE=40 # If not set defaults to 30
       echo $POOL_DISK_SIZE
+
       # Pool min and max size sets parameters for autoscaler to use for minumum and maximum counts of nodes in the node pool
       export POOL_MIN_SIZE=1 # If not set defaults to 1
       export POOL_MAX_SIZE=2 # If not set defaults to 1
       echo $POOL_MIN_SIZE
       echo $POOL_MAX_SIZE
+
+      # Pool OS disk type is used to set the type of operating system disk for nodepool virtual machines. Acceptable values are Managed or Ephemeral.
+      export POOL_OS_DISK_TYPE=Managed # If not set defaults to Managed
+      echo $POOL_OS_DISK_TYPE
 
       ```
 

@@ -31,6 +31,14 @@ az account show
 
 ```
 
+Create the `generated` directory for storing templated files if you have not done so already.
+
+```bash
+
+mkdir -p generated
+
+```
+
 ### Setup Service Principal and credentials
 
 An Azure Service Principal is needed for deploying Azure resources. The below instructions utilize [environment-based authentication](https://docs.microsoft.com/en-us/go/azure/azure-sdk-go-authorization#use-environment-based-authentication).
@@ -158,6 +166,10 @@ env | grep AZURE
 
     # update KUBECONFIG so kubectl can access the different config files.
     # useful for easily switching kube contexts
+    if [ ! "$KUBECONFIG" ];
+    then
+        export KUBECONFIG=~/.kube/config
+    fi
     export KUBECONFIG="${KUBECONFIG}:/workspaces/capi-in-codespaces/generated/${CLUSTER_NAME}.kubeconfig"
 
     # verify kubectl has access to the new context
