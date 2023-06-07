@@ -32,3 +32,8 @@ spec:
   scaling:
     minSize: ${POOL_MIN_SIZE:=1}
     maxSize: ${POOL_MAX_SIZE:=2}
+  osDiskType: ${POOL_OS_DISK_TYPE:=Managed}
+  availabilityZones:
+  - "1"
+  - "2"
+  - "3"
