@@ -65,3 +65,21 @@ spec:
   mode: System
   sku: "${AZURE_NODE_MACHINE_TYPE}"
   name: pool0
+  kubeletConfig:
+    cpuCfsQuota: ${AZURE_NODE_KUBELET_CPUCFSQUOTA:=true}
+  linuxOSConfig:
+    sysctls:
+      fsFileMax: ${AZURE_NODE_LINUXOSCONFIG_FSFILEMAX:=709620}
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
+metadata:
+  name: "${CLUSTER_IDENTITY_NAME}"
+  labels:
+    clusterctl.cluster.x-k8s.io/move-hierarchy: "true"
+spec:
+  type: ServicePrincipal
+  allowedNamespaces: {}
+  tenantID: "${AZURE_TENANT_ID}"
+  clientID: "${AZURE_CLIENT_ID}"
+  clientSecret: {"name":"${AZURE_CLUSTER_IDENTITY_SECRET_NAME}","namespace":"${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"}
