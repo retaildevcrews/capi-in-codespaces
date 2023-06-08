@@ -43,6 +43,7 @@ If you have not already done so, complete the [prerequisites section](./2-manage
     # Customize Linux OS configs for the Node Pool, in this case, the maximum number of open files permitted.
     # The range of acceptable values is 8192 to 12000500, defaults to 709620 when not specified.
     # See https://capz.sigs.k8s.io/topics/managedcluster.html#os-configurations-of-linux-agent-nodes-aks for more details.
+    # This setting is intentionally different from the default simply to make it easy to validate the custom configuration on the cluster.
     export AZURE_NODE_LINUXOSCONFIG_FSFILEMAX=709621
 
     ```
