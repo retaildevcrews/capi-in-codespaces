@@ -10,7 +10,7 @@ The goal of this repository is to provide an environment that accelerates a user
 
 Cluster API is a Kubernetes sub-project focused on providing declarative APIs and tooling to simplify provisioning, upgrading, and operating multiple Kubernetes clusters.
 
-One benefit of Cluster API is a common interface for managing Kubernetes clusters across different infrastructure providers like Azure, AWS, GCP, and more.
+One benefit of Cluster API is a common interface for managing Kubernetes clusters across different infrastructure providers like Azure, AWS, GCP, and more. This allows users to manage their multi-cloud Kubernetes clusters in a consistent way from a single control plane. While there are other tools that can be use to provision clusters, like Terraform, Ansible, or Azure Service Operator, Cluster API provides common cluster management tasks via providers that can be used across different types of clusters.
 
 A diagram showing the different components can be found [here](https://cluster-api.sigs.k8s.io/user/concepts.html).
 
@@ -30,41 +30,6 @@ A diagram showing the different components can be found [here](https://cluster-a
 ![Open Codespace command palette](/images/open-command-palette.png)
 
 ![Open in VS Code Desktop](/images/open-in-vscode-desktop.png)
-
-## Prerequisites
-
-The Lab 1 completed with only access to GitHub Codespaces. To complete the rest of the labs, you will need access to an Azure Subscription with permissions to create a Service Principal.
-
-## Cluster API Visualizer
-
-To help visualize the different components being managed by Cluster API, the labs leverage cluster-api-visualizer UI:
-[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer#readme)
-
-To initiate the visualizer for use run the following command:
-
-```bash
-
-# Add visualizer app to management cluster
-make capi-visualizer
-
-```
-
-To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Open in Browser" button for the visualizer app.
-
-![Open Cluster API Visualizer](images/open-capi-visualizer.png)
-
-## Labs
-
-> **Note**
-> Labs should be completed in order, starting from Lab 1
-
-| Lab  | Description |
-| ------------- | -------- |
-| [Lab 1](./docs/1-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
-| [Lab 2](./docs/2-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
-| [Lab 3](./docs/3-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
-| [Lab 4](./docs/4-upgrade-k8s.md) | Upgrade AKS control plane and node pools |
-| [Lab 5](./docs/5-configure-custom-cluster.md) | Create custom clusters with custom templates |
 
 ## Cluster API Components
 
@@ -91,6 +56,39 @@ Kubernetes clusters are described in cluster API as a combination of general Clu
 A diagram of the CRDs and their relationships can be found [here](https://cluster-api.sigs.k8s.io/developer/crd-relationships.html).
 
 For AKS, details of the Azure provider CRDs can be found [here](https://capz.sigs.k8s.io/topics/managedcluster.html#specification).
+
+## Cluster API Visualizer
+
+To help visualize the different components being managed by Cluster API, the labs leverage cluster-api-visualizer UI:
+[Cluster API Visualizer](https://github.com/Jont828/cluster-api-visualizer#readme)
+
+To initiate the visualizer for use run the following command:
+
+```bash
+
+# Add visualizer app to management cluster
+make capi-visualizer
+
+```
+
+To open the visualizer ui go to the "PORTS" tab in codespaces and click the "Open in Browser" button for the visualizer app.
+
+![Open Cluster API Visualizer](images/open-capi-visualizer.png)
+
+## Labs
+
+Lab 1 can be completed with only access to GitHub Codespaces. To complete the rest of the labs, you will need access to an Azure Subscription with permissions to create a Service Principal.
+
+> **Note**
+> Labs should be completed in order, starting from Lab 1
+
+| Lab  | Description |
+| ------------- | -------- |
+| [Lab 1](./docs/1-kind-cluster.md) | Provision a kind cluster using CAPI and the CAPD provider|
+| [Lab 2](./docs/2-managed-aks-cluster.md)| Provision AKS Cluster using CAPI and the Azure Provider |
+| [Lab 3](./docs/3-add-nodepool.md) | Add a node pool to an AKS Cluster using CAPI and the Azure Provider |
+| [Lab 4](./docs/4-upgrade-k8s.md) | Upgrade AKS control plane and node pools |
+| [Lab 5](./docs/5-configure-custom-cluster.md) | Create custom clusters with custom templates |
 
 ## Next
 

@@ -1,8 +1,8 @@
 # Provision a kind cluster using CAPI and the CAPD provider
 
-## kind
+## Initial management cluster setup using kind
 
-Cluster API requires an existing Kubernetes cluster accessible via kubectl. During the installation process the Kubernetes cluster will be transformed into a management cluster by installing the Cluster API provider components, so it is recommended to keep it separated from any application workload.
+Cluster API requires an existing Kubernetes cluster accessible via kubectl. During the creation of the Codespace, the Kind Kubernetes cluster is transformed into a Cluster API management cluster by installing the Cluster API provider components. In general, it is recommended to keep the Cluster API management cluster separate from the workload clusters it manages.
 
 A workload cluster configuraton with 1 control plane and 1 worker machine is generated as part of the Codespaces setup. It creates a YAML file named `capi-quickstart.yaml` with a predefined list of Cluster API objects; Cluster, Machines, Machine Deployments, etc.
 
@@ -41,7 +41,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
     ```
 
-2. The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure an up-to-date version of the CLI installed to your GH Codespaces:
+2. The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure an up-to-date version of the CLI installed to your GitHub Codespace:
 
     ```bash
 
@@ -56,6 +56,17 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     code capi-quickstart.yaml
 
     ```
+
+    The template defines a ClusterClass, its related referenced objects, and a Cluster object. ClusterClass is a way to define a template for clusters that can then be used to easily manage many clusters. Cluster objects choose a ClusterClass to use by speciyfing `spec.topology.class`.
+
+    The ClusterClass defines the following:
+
+    - spec.controlPlane.machineInfrastructure.ref - the type of machine to use for the control plane nodes
+    - spec.controleplane.ref - the type of control plane to use, eg: kubeadm
+    - spec.infrastructure.ref - the type of cluster to use, eg: docker
+    - spec.patches - allows for some dynamic configuration based in different conditions
+    - spec.variables - allows for user specific configurations for some dynamic configuration
+    - spec.workers - defines the type of machines to use for worker nodes and how they are bootstraped
 
 4. When ready, run the following command to apply the cluster manifest.
 
@@ -74,14 +85,37 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     # validate the workload cluster
     kubectl get cluster
 
+    ```
+
+    Example output:
+
+    ![Example output of get cluster command](/images/capd-get-cluster.png)
+
+    ```bash
+
     # validate cluster and its resources
     clusterctl describe cluster capi-quickstart
+
+    ```
+
+    > **Note**
+    > It is expected that the MachineDeployment worker objects will be `False` in the READY column at this stage. This will be resolved in the next few steps after deploying a CNI to the cluster.
+
+    Example output:
+
+    ![Example output of describe cluster command](/images/capd-describe-cluster.png)
+
+    ```bash
 
     # verify the control plane is up
     # INITIALIZED column should be true
     kubectl get kubeadmcontrolplane
 
     ```
+
+    Example output:
+
+    ![Example output of get kubeadmcontrolplane command](/images/capd-get-control-plane.png)
 
 7. After the control plane node is up and running, we can retrieve the workload cluster Kubeconfig:
 
