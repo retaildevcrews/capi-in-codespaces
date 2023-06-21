@@ -31,6 +31,16 @@ A diagram showing the different components can be found [here](https://cluster-a
 
 ![Open in VS Code Desktop](/images/open-in-vscode-desktop.png)
 
+### Tools used in the labs
+
+The tools used in the labs are already pre-installed in the Codespace. If you would like to run the labs locally, you can install the following tools:
+
+- [az cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl)
+- [helm](https://helm.sh/docs/intro/install)
+- [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+
 ## Cluster API Components
 
 ### Cluster API controllers
