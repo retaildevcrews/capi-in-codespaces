@@ -33,13 +33,15 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
 ## Lab Steps
 
-1. See what pods are running as a result of creation and initialization of the management cluster that was part of the Codespaces setup:
+1. See what pods are running as a result of creation and initialization of the management cluster that was part of the Codespaces setup then verify that all pods are running before to moving on:
 
     ```bash
 
     kubectl get pods -A
 
     ```
+
+![Pods Running](/images/capd-pods-running-example.png)
 
 2. The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure an up-to-date version of the CLI installed to your GH Codespaces:
 
@@ -74,16 +76,41 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     # validate the workload cluster
     kubectl get cluster
 
-    # validate cluster and its resources
-    clusterctl describe cluster capi-quickstart
+    ```
 
-    # verify the control plane is up
-    # INITIALIZED column should be true
-    kubectl get kubeadmcontrolplane
+    ```bash
+
+    # validate cluster and its resources, the warning "WaitingForAvailableMachines" is expected at this time and will be solved in a later step.
+    clusterctl describe cluster capi-quickstart
 
     ```
 
+    ![Cluster Describe](/images/capd-cluster-describe-example.png)
+
+    ```bash
+
+    # verify the control plane is up
+
+    # wait until INITIALIZED column is true before to move on to the next step
+    kubectl get kubeadmcontrolplane
+
+    # alternatively, you can run the following command to wait until the condition has been met or timeout exceeded.
+    kubectl wait kubeadmcontrolplane --all --for=condition=Ready --timeout=120s
+
+    ```
+
+    ![Control Plane](/images/capd-kubeadmcp-example.png)
+
 7. After the control plane node is up and running, we can retrieve the workload cluster Kubeconfig:
+
+    ```bash
+
+    # verify the inital kubectl context before adding the new one
+    kubectl config get-contexts
+
+    ```
+
+    ![Inital Context](/images/capd-initial-context-example.png)
 
     ```bash
 
@@ -100,9 +127,12 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     # verify kubectl has access to the new context
     kubectl config get-contexts
 
+
     ```
 
-8. The control plane won’t be `Ready` until we install a CNI, deploy a CNI solution by running:
+    ![Final Context](/images/capd-final-context-example.png)
+
+8. All nodes won’t be `Ready` until we install a CNI, deploy a CNI solution by running:
 
    ```bash
 
@@ -116,6 +146,9 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     ```bash
 
     kubectl --context=capi-quickstart get nodes
+
+    # alternatively, you can run the following command to wait until the condition has been met or timeout exceeded.
+    kubectl wait --context=capi-quickstart nodes  --all --for=condition=Ready --timeout=180s
 
     ```
 
