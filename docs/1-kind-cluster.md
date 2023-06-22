@@ -33,13 +33,17 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
 ## Lab Steps
 
-1. See what pods are running as a result of creation and initialization of the management cluster that was part of the Codespaces setup:
+1. See what pods are running as a result of creation and initialization of the management cluster that was part of the Codespaces setup then verify that all pods are running before to moving on:
 
     ```bash
 
     kubectl get pods -A
 
     ```
+
+    Example output:
+
+    ![Pods Running](/images/capd-pods-running-example.png)
 
 2. The `clusterctl` CLI tool handles the lifecycle of a Cluster API management cluster. Ensure an up-to-date version of the CLI installed to your GitHub Codespace:
 
@@ -108,8 +112,11 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     ```bash
 
     # verify the control plane is up
-    # INITIALIZED column should be true
+    # wait until INITIALIZED column is true before to move on to the next step
     kubectl get kubeadmcontrolplane
+
+    # alternatively, you can run the following command to wait until the condition has been met or timeout exceeded.
+    kubectl wait kubeadmcontrolplane --all --for=condition=Ready --timeout=120s
 
     ```
 
@@ -118,6 +125,17 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     ![Example output of get kubeadmcontrolplane command](/images/capd-get-control-plane.png)
 
 7. After the control plane node is up and running, we can retrieve the workload cluster Kubeconfig:
+
+    ```bash
+
+    # verify the inital kubectl context before adding the new one
+    kubectl config get-contexts
+
+    ```
+
+    Example output:
+
+    ![Inital Context](/images/capd-initial-context-example.png)
 
     ```bash
 
@@ -136,7 +154,10 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
 
     ```
 
-8. The control plane won’t be `Ready` until we install a CNI, deploy a CNI solution by running:
+    Example output:
+    ![Final Context](/images/capd-final-context-example.png)
+
+8. All nodes won’t be `Ready` until we install a CNI, deploy a CNI solution by running:
 
    ```bash
 
@@ -150,6 +171,9 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
     ```bash
 
     kubectl --context=capi-quickstart get nodes
+
+    # alternatively, you can run the following command to wait until the condition has been met or timeout exceeded.
+    kubectl wait --context=capi-quickstart nodes  --all --for=condition=Ready --timeout=180s
 
     ```
 
