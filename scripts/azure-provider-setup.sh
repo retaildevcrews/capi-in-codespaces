@@ -30,4 +30,4 @@ kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" \
   --from-literal=clientSecret="${CLIENT_SECRET}"
 
 # Initialize Cluster API Provider Azure
-clusterctl init --infrastructure azure:v1.9.2
+clusterctl init --infrastructure azure:v1.10.0
