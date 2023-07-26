@@ -120,7 +120,7 @@ env | grep AZURE
     clusterctl generate cluster ${CLUSTER_NAME} \
     --kubernetes-version ${KUBERNETES_VERSION} \
     --worker-machine-count=${WORKER_MACHINE_COUNT} \
-    --infrastructure azure:v1.9.2 \
+    --infrastructure azure:v1.10.0 \
     --flavor aks \
     > "generated/${CLUSTER_NAME}.yaml"
 
