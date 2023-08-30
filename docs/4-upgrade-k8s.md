@@ -29,7 +29,7 @@ In this walkthrough, you will upgrade the previously created AKS cluster and one
 
     ```bash
 
-    export KUBERNETES_VERSION=1.26.3
+    export KUBERNETES_VERSION=1.27.3
 
     ```
 

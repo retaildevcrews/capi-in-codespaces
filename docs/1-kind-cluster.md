@@ -162,7 +162,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
    ```bash
 
    kubectl --context=capi-quickstart \
-   apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/calico.yaml
+   apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
 
    ```
 
