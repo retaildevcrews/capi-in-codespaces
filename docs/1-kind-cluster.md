@@ -24,7 +24,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
   > ```bash
   >
   > clusterctl generate cluster capi-quickstart --flavor development \
-  > --kubernetes-version v1.26.0 \
+  > --kubernetes-version v1.28.0 \
   > --control-plane-machine-count=1 \
   > --worker-machine-count=1 \
   > > capi-quickstart.yaml

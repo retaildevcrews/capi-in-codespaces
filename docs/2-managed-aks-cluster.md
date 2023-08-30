@@ -86,7 +86,7 @@ env | grep AZURE
     az aks get-versions -l eastus -o table
 
     # set the desired kubernetes version to a one that has available upgrades
-    export KUBERNETES_VERSION="v1.26.0"
+    export KUBERNETES_VERSION="v1.27.1"
 
     # Azure values
     export AZURE_LOCATION="eastus"
