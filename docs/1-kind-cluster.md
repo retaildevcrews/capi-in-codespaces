@@ -24,7 +24,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
   > ```bash
   >
   > clusterctl generate cluster capi-quickstart --flavor development \
-  > --kubernetes-version v1.26.0 \
+  > --kubernetes-version v1.29.0 \
   > --control-plane-machine-count=1 \
   > --worker-machine-count=1 \
   > > capi-quickstart.yaml
@@ -162,7 +162,7 @@ A workload cluster configuraton with 1 control plane and 1 worker machine is gen
    ```bash
 
    kubectl --context=capi-quickstart \
-   apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/calico.yaml
+   apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
 
    ```
 

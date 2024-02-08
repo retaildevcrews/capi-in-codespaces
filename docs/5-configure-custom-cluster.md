@@ -20,7 +20,7 @@ If you have not already done so, complete the [prerequisites section](./2-manage
     az aks get-versions -l eastus -o table
 
     # set the desired kubernetes version to a one that has available upgrades
-    export KUBERNETES_VERSION="v1.26.0"
+    export KUBERNETES_VERSION="v1.28.0"
 
     # Azure values
     export AZURE_LOCATION="eastus"

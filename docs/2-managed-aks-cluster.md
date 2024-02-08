@@ -86,7 +86,7 @@ env | grep AZURE
     az aks get-versions -l eastus -o table
 
     # set the desired kubernetes version to a one that has available upgrades
-    export KUBERNETES_VERSION="v1.26.0"
+    export KUBERNETES_VERSION="v1.28.0"
 
     # Azure values
     export AZURE_LOCATION="eastus"
@@ -120,7 +120,7 @@ env | grep AZURE
     clusterctl generate cluster ${CLUSTER_NAME} \
     --kubernetes-version ${KUBERNETES_VERSION} \
     --worker-machine-count=${WORKER_MACHINE_COUNT} \
-    --infrastructure azure:v1.10.0 \
+    --infrastructure azure:v1.13.1 \
     --flavor aks \
     > "generated/${CLUSTER_NAME}.yaml"
 
