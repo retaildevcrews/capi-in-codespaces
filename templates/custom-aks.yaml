@@ -82,4 +82,6 @@ spec:
   allowedNamespaces: {}
   tenantID: "${AZURE_TENANT_ID}"
   clientID: "${AZURE_CLIENT_ID}"
-  clientSecret: {"name":"${AZURE_CLUSTER_IDENTITY_SECRET_NAME}","namespace":"${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"}
+  clientSecret:
+    name: "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}"
+    namespace: "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
